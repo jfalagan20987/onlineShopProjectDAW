@@ -127,7 +127,7 @@
   .reviews-list{
     @apply /*Mobile*/ flex flex-col gap-4 pt-0 mb-10 w-full justify-center items-center
           /*Tablet*/sm:flex-wrap sm:flex-row sm:items-start 
-          /*Desktop*/ lg:flex-col lg:items-center lg:max-w-lg lg:max-h-[600px] lg:overflow-y-auto lg:flex-nowrap lg:justify-start;
+          /*Desktop*/ lg:flex-col lg:items-center lg:max-w-lg lg:max-h-[600px] lg:overflow-y-auto lg:flex-nowrap lg:justify-start lg:bg-french-gray/20 lg:pb-4 lg:rounded-xl lg:mb-0;
   }
 
   /*Reviews extra*/

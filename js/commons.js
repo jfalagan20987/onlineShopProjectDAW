@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Evento para hacer click en el logo y volver a inicio
   logos.forEach(logo => {
-    logo.addEventListener('click', ()=> location.href = `..${BASE_URL}/index.html`);
+    logo.addEventListener('click', ()=> location.href = `${BASE_URL}/index.html`);
   });
 
   products.forEach((product) => {
