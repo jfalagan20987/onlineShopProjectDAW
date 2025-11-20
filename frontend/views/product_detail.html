@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/output.css">
+  <title>Shift & Go</title>
+</head>
+<body class="m-0 p-0 box-border list-none font-[Roboto] h-screen">
+   <!--Header con el logo en tres formatos distintos que se usarán según conveniencia-->
+    <header class="header-footer sticky top-0 z-3">
+        <img id="btn-menu" class="h-5" src="../assets/icons/menu_burger.png" alt="menu-burger">
+        <img class="logo cursor-pointer h-15" src="../assets/logos/logo_small_shift_and_go.png" alt="logo-small">
+        <img class="logo cursor-pointer hidden" src="../assets/logos/logo_long_shift_and_go.png" alt="logo-long">
+        <img class="logo cursor-pointer hidden" src="../assets/logos/logo_shift_and_go.png" alt="logo">
+
+        <!--nav que será un desplegable en Mobile y Tablet, pero que estará fijo en Desktop-->
+        <nav id="nav-header" class="nav-mobile-tablet">
+            <div id="btn-close" class="h-5 absolute top-[15px] right-[15px] cursor-pointer">
+                <img class="h-5" src="../assets/icons/close_menu.png" alt="close-menu">
+            </div>
+            <!--Buscador de la versión Desktop, que debe encontrarse dentro del header a diferencia de las versiones Mobile y Tablet-->
+            <div class="buscador">
+                <input type="search" name="search" placeholder="Search products..." autocomplete="off">
+            </div>
+
+            <!--Contenido del nav-->
+            <ul class="flex flex-col gap-y-2 w-full mt-2">
+                <li><a id="index" href="../index.html">Home</a></li>
+                <li>
+                    <div>
+                        <a id="categories" href="#">Categories</a>
+
+                        <!--Iconos para controlar el submenu en dos colores distintos que controlaremos con data-variant en JavaScript-->
+                        <img src="../assets/icons/dropdown.svg" alt="dropdown" class="dropdown" data-variant="white">
+                        <img src="../assets/icons/arrowup.svg" alt="arrowup" class="arrowup" data-variant="white">
+
+                        <img src="../assets/icons/dropdown-onyx.svg" alt="dropdown" class="dropdown" data-variant="onyx">
+                        <img src="../assets/icons/arrowup-onyx.svg" alt="arrowup" class="arrowup" data-variant="onyx">
+                    </div>
+                    <ul class="submenu">
+                        <li><a href="#">Adidas</a></li>
+                        <li><a href="#">Converse</a></li>
+                        <li><a href="#">Jordan</a></li>
+                        <li><a href="#">New Balance</a></li>
+                        <li><a href="#">Nike</a></li>
+                        <li><a href="#">Puma</a></li>
+                        <li><a href="#">Reebok</a></li>
+                        <li><a href="#">Under Armour</a></li>
+                    </ul>
+                </li>
+                <li><a id="aboutUs" href="#">About us</a></li>
+                <li><a id="settings" href="#">Settings</a></li>
+            </ul>
+        </nav>
+        <div>
+            <div class="user">
+                <img src="../assets/icons/user.png" alt="user">
+                <!--Este texto, por cuestiones de espacio, solo se mostrará en Tablet y Desktop-->
+                <p>Hello, username</p>
+            </div>
+            <img src="../assets/icons/shopping_cart_black.png" alt="shopping-cart">
+        </div>
+    </header>
+    <main>
+
+    </main>
+  
+    <!--Footer, donde siempre se usaará el logo principal-->
+    <footer class="header-footer">
+        <img class="h-10" src="../assets/logos/logo_shift_and_go.png" alt="logo">
+        <div>
+            <p>©Shift & Go all rights reserved</p>
+            <p>Terms & Policy</p>
+            <p>Contact</p>
+        </div>
+        <div>
+            <img class="h-5" src="../assets/img/instagram-logo.png" alt="instagram-logo">
+            <img class="h-5" src="../assets/img/twitter-logo.png" alt="twitter-logo">
+            <img class="h-5" src="../assets/img/facebook-logo.png" alt="facebook-logo">
+        </div>
+    </footer>
+
+    <script src="../js/commons.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/output.css">
+  <link rel="stylesheet" href="../css/scrollbar.css">
+  <title>Shift & Go</title>
+</head>
+<body class="m-0 p-0 box-border list-none font-[Roboto] h-screen">
+   <!--Header con el logo en tres formatos distintos que se usarán según conveniencia-->
+    <header class="header-footer sticky top-0 z-15">
+        <img id="btn-menu" class="h-6 cursor-pointer lg:hidden lg:ml-1.5" src="../assets/icons/menu_burger.png" alt="menu-burger">
+        <img class="logo cursor-pointer h-15 m-0 sm:hidden" src="../assets/logos/logo_small_shift_and_go.png" alt="logo-small">
+        <img class="logo cursor-pointer h-15 m-0 hidden sm:flex lg:hidden" src="../assets/logos/logo_long_shift_and_go.png" alt="logo-long">
+        <img class="logo cursor-pointer m-0 hidden lg:flex h-20" src="../assets/logos/logo_shift_and_go.png" alt="logo">
+
+        <!--nav que será un desplegable en Mobile y Tablet, pero que estará fijo en Desktop-->
+        <nav id="nav-header" class="nav-header">
+            <div id="btn-close" class="h-6 absolute top-6 right-6 cursor-pointer lg:hidden">
+                <img class="h-6" src="../assets/icons/close_menu.png" alt="close-menu">
+            </div>
+            <!--Buscador de la versión Desktop, que debe encontrarse dentro del header a diferencia de las versiones Mobile y Tablet-->
+            <div class="buscador hidden lg:flex lg:w-2xl mt-2.5">
+                <input class="h-10 w-full border border-solid border-onyx rounded pl-2 text-onyx font-medium bg-anti-flash-white 
+                focus:border-3 focus:border-solid focus:border-salmon-pink focus:outline-0 focus:shadow-salmon-pink focus:shadow-xs" type="search" name="search" placeholder="Search products..." autocomplete="off">
+            </div>
+
+            <!--Contenido del nav-->
+            <ul class="flex flex-col gap-y-5 w-full m-10 lg:flex-row lg:justify-center lg:items-center lg:w-full lg:gap-20 lg:m-0">
+                <li><a class="nav-header-a" id="index" href="../index.html">Home</a></li>
+                <li class="lg:relative">
+                    <div class="flex items-center gap-0.5">
+                        <a class="nav-header-a" id="categories" href="#">Categories</a>
+
+                        <!--Iconos para controlar el submenu en dos colores distintos que controlaremos con data-variant en JavaScript-->
+                        <img src="../assets/icons/dropdown.svg" alt="dropdown" class="dropdown cursor-pointer lg:hidden" data-variant="white">
+                        <img src="../assets/icons/arrowup.svg" alt="arrowup" class="arrowup cursor-pointer lg:hidden" data-variant="white">
+
+                        <img src="../assets/icons/dropdown-onyx.svg" alt="dropdown" class="dropdown cursor-pointer lg:flex" data-variant="onyx">
+                        <img src="../assets/icons/arrowup-onyx.svg" alt="arrowup" class="arrowup cursor-pointer" data-variant="onyx">
+                    </div>
+                    <ul class="submenu">
+                        <li><a class="nav-header-a" href="#">Adidas</a></li>
+                        <li><a class="nav-header-a" href="#">Converse</a></li>
+                        <li><a class="nav-header-a" href="#">Jordan</a></li>
+                        <li><a class="nav-header-a" href="#">New Balance</a></li>
+                        <li><a class="nav-header-a" href="#">Nike</a></li>
+                        <li><a class="nav-header-a" href="#">Puma</a></li>
+                        <li><a class="nav-header-a" href="#">Reebok</a></li>
+                        <li><a class="nav-header-a" href="#">Under Armour</a></li>
+                    </ul>
+                </li>
+                <li><a class="nav-header-a" id="aboutUs" href="#">About us</a></li>
+                <li><a class="nav-header-a" id="settings" href="#">Settings</a></li>
+            </ul>
+        </nav>
+        <div class="flex gap-4 items-center">
+            <div class="user">
+                <img class="h-8 cursor-pointer" src="../assets/icons/user.png" alt="user">
+                <!--Este texto, por cuestiones de espacio, solo se mostrará en Tablet y Desktop-->
+                <p class="hidden font-bold text-onyx sm:flex">Hello, username</p>
+            </div>
+            <img class="h-8 cursor-pointer" src="../assets/icons/shopping_cart_black.png" alt="shopping-cart">
+        </div>
+    </header>
+    <main class="bg-anti-flash-white text-onyx min-h-full flex flex-col items-center p-4 gap-6">
+        <!--Sección que contiene los detalles del producto-->
+         <section class="product-detail">
+            <!--Para la imagen y el botón de wishlist, mantenemos estructura idéntica a la página principal y siempre usamos imágenes 1:1-->
+            <div class="relative sm:max-w-1/2">
+                <img class="w-full rounded-xl" src="../assets/img/shoes/shai001_1-1.jpg" alt="producto-1-1">
+                <img class="wishlist" src="../assets/icons/wishlist.svg" alt="wishlist">
+            </div>
+
+            <!--Apartado con todos los detalles (nombre, descripción, valoración media, color, cantidad, talla, precio y botones)-->
+            <!--En Mobile: aparecerá debajo de la imagen -- En Tablet y Desktop: a la derecha de la imagen-->
+            <div class="flex flex-col gap-1 sm:pr-2">
+
+                <!--Juntamos nombre, descripción y valoración media en un mismo apartado-->
+                <div class="flex flex-col items-start gap-1.5">
+                    <h3 class="font-bold text-3xl">SHAI 001</h3>
+                    <p class="text-sm">
+                        Converse releases the first custom shoes for the NBA MVP, Finals MVP and NBA Champion, Shai Gilgeous-Alexander.
+                    </p>
+                    <div class="font-semibold flex items-center gap-2 self-end">
+                        <p>4.7</p>
+                        <p>★★★★☆</p> <!--Esto queda pendiente de implementar una valoración media dinámica-->
+                    </div>
+                </div>
+
+                <!--Encajonamos en un form los elementos que tendrán influencia para añadir al carrito o comprar el producto-->
+                <form class="flex flex-col gap-4">
+                    <label for="color" class="flex items-center gap-2 font-semibold">Color:
+                        <button class="color bg-amber-400 cursor-pointer hover:border hover:border-solid hover:border-onyx" title="gold"></button>
+                        <button class="color bg-gray-400 cursor-pointer hover:border hover:border-solid hover:border-onyx" title="silver"></button>
+                        <button class="color bg-blue-300 cursor-pointer hover:border hover:border-solid hover:border-onyx" title="blue"></button>
+                    </label>
+    
+                    <div class="flex items-end justify-between w-full">
+                        <div class="flex flex-col items-start gap-3">
+                            <label for="quantity" class="font-semibold">Quantity:
+                                <input type="number" name="quantity" id="quantity" min="1" value="1" class="max-w-10 font-normal bg-white rounded border border-solid border-onyx pl-1 focus:outline-0 focus:border-2 focus:border-salmon-pink">
+                            </label>
+            
+                            <label for="size" class="font-semibold">Size:
+                                <select name="size" id="size" class="max-w-10 font-normal bg-white rounded border border-solid border-onyx focus:outline-0 focus:border-2 focus:border-salmon-pink min-w-12">
+                                    <option value="40">40</option>
+                                    <option value="41">41</option>
+                                    <option value="42">42</option>
+                                    <option value="43">43</option>
+                                    <option value="44">44</option>
+                                    <option value="45">45</option>
+                                    <option value="46">46</option>
+                                    <option value="47">47</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <!--Adjuntamos el precio a este form por una simple cuestión de distribución de los elementos-->
+                        <div class="preu">
+                            <p class="line-through text-poppy">149.99€</p>
+                            <h3 class="text-2xl font-bold self-end">129.99€</h3>
+                        </div>
+                    </div>
+                    <div class="buy-cart">
+                        <button type="submit" class="buy-now">BUY NOW</button>
+                        <button class="add-to-cart m-0"><img class="h-5 m-auto" src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                    </div>
+                </form>
+            </div>
+         </section>
+
+         <!--Apartado con Reviews y Productos Similares-->
+         <div class="mb-4 sm:w-full lg:flex lg:items-start lg:justify-center mt-6">
+
+            <!--REVIEWS-->
+             <section class="reviews-list">
+                <h2 class="basis-full font-bold text-xl text-center mt-4 lg:sticky lg:top-0 lg:z-10 lg:bg-anti-flash-white lg:w-full lg:pb-3">REVIEWS</h2>
+                <div class="review">
+                    <div class="flex items-start gap-2">
+                        <h3 class="font-semibold">user123</h3>
+                        <p>★★★★☆</p>
+                    </div>
+                    <small>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex rerum debitis, quam at magnam eos modi 
+                        facere quos? Recusandae magni itaque fugit suscipit quae, consequatur natus dolores labore! Assumenda, esse!
+                        Nisi voluptas doloribus illum. Optio eveniet repellat excepturi consequuntur nostrum doloremque cum eum error? 
+                        Pariatur repellat rerum sunt sed fugit, natus eveniet, voluptas a possimus suscipit alias asperiores molestiae aperiam!
+                    </small>
+                </div>
+                <div class="review">
+                    <div class="flex items-start gap-2">
+                        <h3 class="font-semibold">user123</h3>
+                        <p>★★★★★</p>
+                    </div>
+                    <small>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex rerum debitis, quam at magnam eos modi 
+                        facere quos? Recusandae magni itaque fugit suscipit quae, consequatur natus dolores labore! Assumenda, esse!
+                    </small>
+                </div>
+
+                <!--Apartado con más reviews-->
+                <!--Tablet y Mobile: inicialmente ocultas, se desplegarán al hacer click en el botón asignado-->
+                <!--Desktop: siempre visibles-->
+                <div class="more-reviews hidden lg:flex">
+                    <div class="review">
+                        <div class="flex items-start gap-2">
+                            <h3 class="font-semibold">user123</h3>
+                            <p>★★★★★</p>
+                        </div>
+                        <small>
+                            OKC, OKC, OKC!
+                        </small>
+                    </div>
+                    <div class="review">
+                        <div class="flex items-start gap-2">
+                            <h3 class="font-semibold">user123</h3>
+                            <p>★★★☆☆</p>
+                        </div>
+                        <small>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex rerum debitis, quam at magnam eos modi 
+                            facere quos? Recusandae magni itaque fugit suscipit quae, consequatur natus dolores labore! Assumenda, esse!
+                        </small>
+                    </div>
+                    <div class="review">
+                        <div class="flex items-start gap-2">
+                            <h3 class="font-semibold">user123</h3>
+                            <p>★★★☆☆</p>
+                        </div>
+                        <small>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex rerum debitis, quam at magnam eos modi 
+                            facere quos? Recusandae magni itaque fugit suscipit quae, consequatur natus dolores labore! Assumenda, esse!
+                        </small>
+                    </div>
+                    <div class="review">
+                        <div class="flex items-start gap-2">
+                            <h3 class="font-semibold">user123</h3>
+                            <p>★★★★★</p>
+                        </div>
+                        <small>
+                            OKC, OKC, OKC!
+                        </small>
+                    </div>
+                </div>
+
+                <!--Botón para desplegar el contenedor "more-reviews". En Desktop no aparecerá-->
+                <button class="basis-full mb-3 whitespace-nowrap text-poppy font-semibold cursor-pointer hover:scale-110 hover:underline lg:hidden">See more</button>
+            </section>
+
+            <!--Sección con 6 productos similares (la idea es que en un futuro estos productos correspondan a la misma marca de zapatilla)-->
+            <section>
+                <h2 class="font-bold text-xl mb-4 mt-4 text-center">SIMILAR PRODUCTS</h2>
+                <div class="similarProducts">
+                    <div id="product">
+                        <img class="rounded-xl" src="../assets/img/shoes/nike-kobe-9_1-1.jpg" alt="producto-1-1">
+                    </div>
+                    <div id="product">
+                        <img class="rounded-xl" src="../assets/img/shoes/adidas-harden-9_1-1.jpg" alt="producto-1-1">
+                    </div>
+                    <div id="product">
+                        <img class="rounded-xl" src="../assets/img/shoes/adidas-ae-2_1-1.jpg" alt="producto-1-1">
+                    </div>
+                    <div id="product">
+                        <img class="rounded-xl" src="../assets/img/shoes/jordan-tatum-3_1-1.jpg" alt="producto-1-1">
+                    </div>
+                    <div id="product">
+                        <img class="rounded-xl" src="../assets/img/shoes/curry-4_1-1.jpg" alt="producto-1-1">
+                    </div>
+                    <div id="product">
+                        <img class="rounded-xl" src="../assets/img/shoes/kd-18_1-1.jpg" alt="producto-1-1">
+                    </div>
+                </div>
+            </section>
+         </div>
+    </main>
+  
+    <!--Footer, donde siempre se usaará el logo principal-->
+    <footer class="header-footer z-10 gap-0.5">
+        <img class="h-10 cursor-pointer" src="../assets/logos/logo_shift_and_go.png" alt="logo">
+        <div class="flex flex-col gap-2 justify-center sm:flex-row sm:gap-5">
+            <p class="text-poppy text-xs">©Shift & Go all rights reserved</p>
+            <p class="text-poppy text-xs">Terms & Policy</p>
+            <p class="text-poppy text-xs">Contact</p>
+        </div>
+        <div class="flex gap-3">
+            <img class="h-5 cursor-pointer" src="../assets/img/instagram-logo.png" alt="instagram-logo">
+            <img class="h-5 cursor-pointer" src="../assets/img/twitter-logo.png" alt="twitter-logo">
+            <img class="h-5 cursor-pointer" src="../assets/img/facebook-logo.png" alt="facebook-logo">
+        </div>
+    </footer>
+
+    <script src="../js/product_detail.js"></script>
+    <script src="../js/commons.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+:root{
+    --poppy: #DF2935;
+    --anti-flash-white: #EFF1F3;
+    --onyx: #303633;
+    --salmon-pink: #ED969C;
+    --french-gray: #BDC5D9;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--anti-flash-white);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--poppy);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--onyx);
+  cursor: pointer;
+}

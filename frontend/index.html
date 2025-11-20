@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/commons.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>Shift & Go</title>
+</head>
+<body>
+    <!--Header con el logo en tres formatos distintos que se usarán según conveniencia-->
+    <header>
+        <img id="btn-menu" src="./assets/icons/menu_burger.png" alt="menu-burger">
+        <img class="logo" src="./assets/logos/logo_small_shift_and_go.png" alt="logo-small">
+        <img class="logo" src="./assets/logos/logo_long_shift_and_go.png" alt="logo-long">
+        <img class="logo" src="./assets/logos/logo_shift_and_go.png" alt="logo">
+
+        <!--nav que será un desplegable en Mobile y Tablet, pero que estará fijo en Desktop-->
+        <nav id="nav-header">
+            <div id="btn-close">
+                <img src="./assets/icons/close_menu.png" alt="close-menu">
+            </div>
+            <!--Buscador de la versión Desktop, que debe encontrarse dentro del header a diferencia de las versiones Mobile y Tablet-->
+            <div class="buscador">
+                <input type="search" name="search" placeholder="Search products..." autocomplete="off">
+            </div>
+
+            <!--Contenido del nav-->
+            <ul>
+                <li><a id="index" href="./index.html">Home</a></li>
+                <li>
+                    <div>
+                        <a id="categories" href="#">Categories</a>
+
+                        <!--Iconos para controlar el submenu en dos colores distintos que controlaremos con data-variant en JavaScript-->
+                        <img src="./assets/icons/dropdown.svg" alt="dropdown" class="dropdown" data-variant="white">
+                        <img src="./assets/icons/arrowup.svg" alt="arrowup" class="arrowup" data-variant="white">
+
+                        <img src="./assets/icons/dropdown-onyx.svg" alt="dropdown" class="dropdown" data-variant="onyx">
+                        <img src="./assets/icons/arrowup-onyx.svg" alt="arrowup" class="arrowup" data-variant="onyx">
+                    </div>
+                    <ul class="submenu">
+                        <li><a href="#">Adidas</a></li>
+                        <li><a href="#">Converse</a></li>
+                        <li><a href="#">Jordan</a></li>
+                        <li><a href="#">New Balance</a></li>
+                        <li><a href="#">Nike</a></li>
+                        <li><a href="#">Puma</a></li>
+                        <li><a href="#">Reebok</a></li>
+                        <li><a href="#">Under Armour</a></li>
+                    </ul>
+                </li>
+                <li><a id="aboutUs" href="#">About us</a></li>
+                <li><a id="settings" href="#">Settings</a></li>
+            </ul>
+        </nav>
+        <div>
+            <div class="user">
+                <img src="./assets/icons/user.png" alt="user">
+                <!--Este texto, por cuestiones de espacio, solo se mostrará en Tablet y Desktop-->
+                <p>Hello, username</p>
+            </div>
+            <img src="./assets/icons/shopping_cart_black.png" alt="shopping-cart">
+        </div>
+
+    </header>
+
+    <main>
+        
+        <div class="container">
+
+            <!--Aside que será fijo en Desktop, pero que se transformará en un popup para Mobile y Tablet-->
+            <!--Funcionará como un form para comunicarse con la base de datos cuando llegue el momento-->
+            <aside class="filters">
+                <form action="#">
+
+                    <!--Selector múltiple de categorías mediante checkbox-->
+                    <section class="filter">
+                        <h3>Brands</h3>
+                        <ul>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="adidas">Adidas</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="converse">Converse</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="jordan">Jordan</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="newbalance">New Balance</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="nike">Nike</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="puma">Puma</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="reebok">Reebok</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="underarmour">Under Armour</label></li>
+                        </ul>
+                    </section>
+                    
+                    <!--Selector múltiple de colores (todavia no tengo claro cómo puedo hacer funcionarlo dentro del form para conectar con la base de datos)-->
+                    <section class="filter">
+                        <h3>Colors</h3>
+                        <div class="colors">
+                            <button class="color" title="black"></button>
+                            <button class="color" title="white"></button>
+                            <button class="color" title="gold"></button>
+                            <button class="color" title="silver"></button>
+                            <button class="color" title="red"></button>
+                            <button class="color" title="blue"></button>
+                            <button class="color" title="yellow"></button>
+                            <button class="color" title="orange"></button>
+                            <button class="color" title="green"></button>
+                            <button class="color" title="pink"></button>
+                        </div>
+                    </section>
+                    
+                    <!--Un rango de precio donde, en el futuro, debería incluir que tenga dos botones para fijar mínimo y máximo (todavía no sé cómo hacerlo)-->
+                    <section class="filter">
+                        <h3>Price range</h3>
+                        <input type="range" min="0" max="300" step="5">
+                        <ul class="price-range">
+                            <li>0 to 25€</li>
+                            <li>25 to 50€</li>
+                            <li>50 to 75€</li>
+                            <li>75 to 100€</li>
+                            <li>100€ or more</li>
+                        </ul>
+                    </section>
+
+                    <!--El submit del form que solo aparece cuando está en formato popup. Mi idea es que en Desktop se actualice cada vez que el usuario modifique un filtro-->
+                    <input type="submit" value="SEARCH">
+                </form>
+            </aside>
+            
+            <!--Productos-->
+            <div class="products-container">
+
+                <!--Buscador para Mobile y Tablet, que debe aparecer en el main y con un botón para desplegar el popup de los filtros-->
+                <div class="buscador">
+                    <input type="search" name="search" placeholder="Search products..." autocomplete="off">
+                    <img src="./assets/icons/filter.svg" alt="filter">
+                </div>
+
+                <!--Sección destacados donde, en principio, la idea es que aparezcan descuentos de productos destacados-->
+                <section class="featured">
+                    <div>
+                        <!--Para la sección destacados vamos alternando con imágenes 3:2 (Mobile) y 1:1 (Tablet y Desktop)-->
+                        <div>
+                            <img src="./assets/img/shoes/shai001_3-2.jpg" alt="producto-3-2">
+                            <img src="./assets/img/shoes/shai001_1-1.jpg" alt="producto-1-1">
+                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                        </div>
+                        <h3>SHAI 001</h3>
+                        <div>
+                            <!--Botones de comprar ya y añadir al carrito-->
+                            <div class="buy-cart">
+                                <button class="buy-now">BUY NOW</button>
+                                <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                            </div>
+
+                            <!--Precio original y precio actual-->
+                            <div class="preu">
+                                <p>149.99€</p>
+                                <h3>129.99€</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div>
+                            <img src="./assets/img/shoes/curry-4_3-2.jpg" alt="producto-3-2">
+                            <img src="./assets/img/shoes/curry-4_1-1.jpg" alt="producto-1-1">
+                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                        </div>
+                        <h3>UA Curry 4</h3>
+                        <div>
+                            <div class="buy-cart">
+                                <button class="buy-now">BUY NOW</button>
+                                <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                            </div>
+                            <div class="preu">
+                                <p>99.99€</p>
+                                <h3>85.00€</h3>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div>
+                        <div>
+                            <img src="./assets/img/shoes/kd-18_3-2.jpg" alt="producto-3-2">
+                            <img src="./assets/img/shoes/kd-18_1-1.jpg" alt="producto-1-1">
+                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                        </div>
+                        <h3>Nike KD 18</h3>
+                        <div>
+                            <div class="buy-cart">
+                                <button class="buy-now">BUY NOW</button>
+                                <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                            </div>
+                            <div class="preu">
+                                <p>185.00€</p>
+                                <h3>169.99€</h3>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div>
+                        <div>
+                            <img src="./assets/img/shoes/lebron-9_3-2.jpg" alt="producto-3-2">
+                            <img src="./assets/img/shoes/lebron-9_1-1.jpg" alt="producto-1-1">
+                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                        </div>
+                        <h3>Nike LeBron 9</h3>
+                        <div>
+                            <div class="buy-cart">
+                                <button class="buy-now">BUY NOW</button>
+                                <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                            </div>
+                            <div class="preu">
+                                <p>119.99€</p>
+                                <h3>109.99€</h3>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </section>
+        
+                <!--Segunda sección de productos-->
+                <h2 id="sectionTitle">MORE PRODUCTS</h2>
+                <section class="moreProducts">
+                    <div>
+                        <div>
+                            <div>
+                                <img src="./assets/img/shoes/jordan-tatum-3_1-1.jpg" alt="producto-1-1">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            </div>
+                            <div class="details">
+                                <h4>Jordan Tatum 3</h4>
+                                <div class="preu">
+                                    <p></p>
+                                    <h3>94.99€</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="buy-cart">
+                            <button class="buy-now">BUY NOW</button>
+                            <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        </div>
+                    </div>
+        
+                    <div>
+                        <div>
+                            <div>
+                                <img src="./assets/img/shoes/adidas-ae-2_1-1.jpg" alt="producto-1-1">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            </div>
+                            <div class="details">
+                                <h4>Adidas AE 2</h4>
+                                <div class="preu">
+                                    <p></p>
+                                    <h3>129.99€</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="buy-cart">
+                            <button class="buy-now">BUY NOW</button>
+                            <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        </div>
+                    </div>
+        
+                    <div>
+                        <div>
+                            <div>
+                                <img src="./assets/img/shoes/jordan-giannis-immortality-4_1-1.jpg" alt="producto-1-1">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            </div>
+                            <div class="details">
+                                <h4>Giannis Immortality</h4>
+                                <div class="preu">
+                                    <p>85.00€</p>
+                                    <h3>69.99€</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="buy-cart">
+                            <button class="buy-now">BUY NOW</button>
+                            <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        </div>
+                    </div>
+        
+                    <div>
+                        <div>
+                            <div>
+                                <img src="./assets/img/shoes/jordan-luka_1-1.jpg" alt="producto-1-1">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            </div>
+                            <div class="details">
+                                <h4>Jordan Luka</h4>
+                                <div class="preu">
+                                    <p>94.99€</p>
+                                    <h3>79.99€</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="buy-cart">
+                            <button class="buy-now">BUY NOW</button>
+                            <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        </div>
+                    </div>
+        
+                    <div>
+                        <div>
+                            <div>
+                                <img src="./assets/img/shoes/adidas-harden-9_1-1.jpg" alt="producto-1-1">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            </div>
+                            <div class="details">
+                                <h4>Adidas Harden 9</h4>
+                                <div class="preu">
+                                    <p></p>
+                                    <h3>159.99€</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="buy-cart">
+                            <button class="buy-now">BUY NOW</button>
+                            <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        </div>
+                    </div>
+        
+                    <div>
+                        <div>
+                            <div>
+                                <img src="./assets/img/shoes/nike-book-1_1-1.jpg" alt="producto-1-1">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            </div>
+                            <div class="details">
+                                <h4>Nike Book 1</h4>
+                                <div class="preu">
+                                    <p>175.00€</p>
+                                    <h3>149.99€</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="buy-cart">
+                            <button class="buy-now">BUY NOW</button>
+                            <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div>
+                            <div>
+                                <img src="./assets/img/shoes/nike-kobe-9_1-1.jpg" alt="producto-1-1">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            </div>
+                            <div class="details">
+                                <h4>Nike Kobe 9</h4>
+                                <div class="preu">
+                                    <p></p>
+                                    <h3>179.99€</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="buy-cart">
+                            <button class="buy-now">BUY NOW</button>
+                            <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <div>
+                                <img src="./assets/img/shoes/jordan-zion-4.jpg" alt="producto-1-1">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            </div>
+                            <div class="details">
+                                <h4>Jordan Zion 4</h4>
+                                <div class="preu">
+                                    <p></p>
+                                    <h3>149.99€</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="buy-cart">
+                            <button class="buy-now">BUY NOW</button>
+                            <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div>
+                            <div>
+                                <img src="./assets/img/shoes/reebok-shaqattaq_1-1.jpg" alt="producto-1-1">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            </div>
+                            <div class="details">
+                                <h4>Reebok Shaqattaq</h4>
+                                <div class="preu">
+                                    <p>179.99€</p>
+                                    <h3>80.00€</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="buy-cart">
+                            <button class="buy-now">BUY NOW</button>
+                            <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div>
+                            <div>
+                                <img src="./assets/img/shoes/nike-zoom-freak-5_1-1.jpg" alt="producto-1-1">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            </div>
+                            <div class="details">
+                                <h4>Nike Zoom Freak 5</h4>
+                                <div class="preu">
+                                    <p>109.99€</p>
+                                    <h3>85.00€</h3>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="buy-cart">
+                            <button class="buy-now">BUY NOW</button>
+                            <button class="add-to-cart"><img src="./assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!--Footer, donde siempre se usaará el logo principal-->
+    <footer>
+        <img src="./assets/logos/logo_shift_and_go.png" alt="logo">
+        <div>
+            <p>©Shift & Go all rights reserved</p>
+            <p>Terms & Policy</p>
+            <p>Contact</p>
+        </div>
+        <div>
+            <img src="./assets/img/instagram-logo.png" alt="instagram-logo">
+            <img src="./assets/img/twitter-logo.png" alt="twitter-logo">
+            <img src="./assets/img/facebook-logo.png" alt="facebook-logo">
+        </div>
+    </footer>
+
+    <script src="./js/commons.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>

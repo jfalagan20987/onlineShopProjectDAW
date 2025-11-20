@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+/*Paleta de colores*/
+@theme{
+    --color-poppy: #DF2935;
+    --color-anti-flash-white: #EFF1F3;
+    --color-onyx: #303633;
+    --color-salmon-pink: #ED969C;
+    --color-french-gray: #BDC5D9;
+}
+
+/*Fuentes*/
+@font-face {
+    font-family: Alexandria;
+    src: url("../assets/fonts/Alexandria/Alexandria-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url("../assets/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf");
+}
+
+/* COMPONENTES -- Se han generado, en su mayoría, siguiendo las clases descritas en los .css aplicados en la página principal*/
+@layer components{
+
+  /*Estilo para header y footer*/
+  .header-footer{
+    @apply w-full bg-french-gray flex items-center justify-between p-5 relative;
+  }
+
+  /*Estilo para el menú del header*/
+  .nav-header{
+    @apply /*Mobiel y Tablet*/ hidden fixed top-0 left-0 right-0 bottom-0 bg-onyx text-anti-flash-white z-1 flex-col justify-start items-start p-1
+      /*Desktop*/ lg:text-center lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-4 lg:sticky lg:bg-french-gray lg:p-0 lg:w-full;
+    }
+  
+  /*Estilos de iconos para desplegar el submenú de Categories*/  
+  .arrowup{
+    @apply hidden;
+  }
+
+  .dropdown{
+    @apply hidden;
+  }
+
+  /*Submenú de Categories*/
+  .submenu{
+    @apply /*Mobile y Tablet*/ hidden flex-col gap-5 mt-5 mx-10
+            /*Desktop*/ lg:absolute lg:top-8 lg:left-0 lg:bg-anti-flash-white lg:border-2 lg:border-solid lg:border-poppy
+            lg:rounded-2xl lg:p-4 lg:items-start lg:gap-2 lg:z-50 lg:m-0 lg:shadow-lg lg:shadow-onyx lg:w-max lg:whitespace-nowrap
+  }
+
+  .submenu a:hover{
+    @apply lg:text-poppy
+  }
+
+  .submenu-visible{
+    @apply flex;
+  }
+
+  .nav-header-a {
+    @apply text-anti-flash-white text-[1.2em] font-bold cursor-pointer lg:text-onyx;
+  }
+
+  .nav-visible{
+    @apply flex;
+  }
+
+  .no-scroll{
+    @apply overflow-hidden;
+  }
+
+  .nav-header-a:hover{
+    @apply underline;
+  }
+
+  .user{
+    @apply flex gap-1.5 items-center;
+  }
+
+  /*Footer fijo para cuando desplegamos el nav header en Mobile y Tablet*/
+  .footer-fixed{
+    @apply fixed bottom-0 left-0 w-full;
+  }
+
+  /*Componente para el detalle del producto -- Ajustamos anchura a partir de Tablet para que cuadren bien los dos contenedores que lo componen*/
+  .product-detail{
+    @apply /*Mobile*/ flex flex-col gap-3 border border-solid border-poppy rounded-xl p-4 w-11/12 mt-4
+            /*Tablet y Desktop*/ sm:flex-row sm:justify-between sm:items-center sm:w-full sm:gap-6 sm:max-w-3xl;
+  }
+
+  /*Botón whishlist*/
+  .wishlist{
+    @apply absolute top-2 right-2 border-0 w-6 h-6 text-poppy flex items-center justify-center cursor-pointer hover:scale-110;
+  }
+
+  /*Componente para el div que contiene los botones de Comrpar y Añadir al carrito*/
+  .buy-cart{
+    @apply /*Mobile*/ flex flex-col gap-2 items-center justify-center w-full 
+          /*Tablet y Desktop*/ sm:flex-row sm:justify-between
+          md:flex-col; /*Volvemos a flex-col para ajustar espacio según el tamaño de la pantalla de la Tablet y que quede todo mejor alineado*/
+  }
+
+  /*Botón comprar ya*/
+  .buy-now {
+    @apply w-full bg-poppy border-0 p-2 font-bold text-anti-flash-white rounded-xl cursor-pointer hover:shadow-sm hover:shadow-poppy active:bg-onyx hover:scale-105;
+  }
+
+  /*Botón añadir al carrito*/
+  .add-to-cart {
+    @apply w-full bg-anti-flash-white p-2 border-2 border-solid border-poppy ml-2 rounded-xl cursor-pointer hover:shadow-sm hover:shadow-poppy active:bg-onyx hover:scale-105;
+  }
+
+  /*Botones de selector de color*/
+  .color {
+    @apply w-5 h-4 rounded border-0;
+  }
+
+  /*Disposición del contenedor con los precios (descuento y final)*/
+  .preu {
+    @apply flex flex-col items-end;
+  }
+
+  /*REVIEWS*/
+  /*En Desktop, le damos una altura fija para cuadrar con la altura de los productos similares.
+    Se puede hacer scroll dentro del contenedor por si hay muchas reviews y así no descuadrar la distribución de elementos*/
+  .reviews-list{
+    @apply /*Mobile*/ flex flex-col gap-4 pt-0 mb-10 w-full justify-center items-center
+          /*Tablet*/sm:flex-wrap sm:flex-row sm:items-start 
+          /*Desktop*/ lg:flex-col lg:items-center lg:max-w-lg lg:max-h-[600px] lg:overflow-y-auto lg:flex-nowrap lg:justify-start;
+  }
+
+  /*Reviews extra*/
+  .more-reviews{
+    @apply /*Mobile*/ flex flex-col gap-4 justify-start 
+          /*Tablet*/ sm:flex-wrap sm:flex-row sm:justify-center
+          /*Desktop*/ lg:flex-col;
+  }
+
+  /*Estilo de cada review. Anchura límite en Mobile para no sobresalir en dispositivos pequeños y que se hagan más pequeñas*/
+  .review{
+    @apply flex flex-col gap-0.5 max-w-80 
+          /*Anchura fija en Tablet y Desktop para cuadrar todo el contenido*/ sm:w-80;
+  }
+
+  /*Contendor con los Productos similares*/
+  .similarProducts{
+    @apply /*Mobile*/ flex flex-wrap gap-2 items-center justify-center 
+            /*Tablet*/ sm:flex-nowrap sm:overflow-x-auto sm:scroll-smooth sm:justify-start /*Aparece scroll horizontal*/
+            /*Desktop*/ lg:flex-wrap lg:overflow-x-hidden lg:justify-center lg:max-w-lg;
+  }
+
+  /*Estilo para cada producto, del que solo mostraremos su imagen*/
+  /*Se especifica que no puede hacerse más pequeño para que funcione en el slider horizontal de Tablet. 
+    Sino, disminuiría de tamaño hasta cuadrar todos los productos en el ancho de la página*/
+  #product{
+    @apply p-3 border border-solid border-poppy rounded-xl shrink-0 w-44 cursor-pointer hover:bg-red-200;
+  }
+}

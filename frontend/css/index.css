@@ -1,0 +1,627 @@
+main{
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  row-gap: 1.5em;
+}
+
+/* Disposición inicial de los productos destacados */
+.featured{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 1em;
+}
+
+.featured > div{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.3em;
+    border: 1px solid var(--poppy);
+    padding: 0.8em;
+    border-radius: 10px;
+    width: 90%;
+    min-width: 240px;
+}
+
+img[alt="producto-3-2"], img[alt="producto-1-1"]{
+  width: 100%;
+}
+
+.featured img[alt="producto-1-1"]{
+  display: none;
+}
+
+/* Como necesitamos que el icono de la lista de deseos flote sobre la imagen del producto, hacemos que sea absolute */
+.wishlist {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  width: 25px;
+  height: 25px;
+  color: var(--poppy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* El div que contiene la imagen, será relative para dar soporte al wishlist absolute */
+.featured > div > div:first-child,
+.moreProducts > div > div > div:first-child {
+  position: relative;
+}
+
+.featured .buy-cart{
+  display: flex;
+  align-items: center;
+}
+
+.buy-now{
+  background-color: var(--poppy);
+  border: none;
+  padding: 0.8em 0.8em;
+  font-weight: bold;
+  color: var(--anti-flash-white);
+}
+
+.add-to-cart{
+  background-color: var(--anti-flash-white);
+  padding: 0.5em;
+  border: solid 2px var(--poppy);
+  margin-left: 0.5em;
+}
+
+.buy-now, .add-to-cart{
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* Para estos botones, hago un transform menor porque sino se superponen sobre otros elementos */
+.buy-now:hover, .add-to-cart:hover{
+  transform: scale(1.05);
+}
+
+.wishlist:hover, img[alt="filter"]:hover{
+  transform: scale(1.1);
+}
+
+.buy-now:hover, .add-to-cart:hover{
+  box-shadow: 0 0 10px var(--poppy);
+  /* box-shadow: 4px 2px 2px var(--onyx); */
+}
+
+.buy-now:active, .add-to-cart:active{
+  background-color: var(--onyx);
+  /* box-shadow: -2px -2px 1px var(--onyx); */
+}
+
+.featured > div > div:last-child{
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+}
+
+.preu{
+    display: flex;
+    flex-direction: column;
+    align-items:end;
+
+    /* Añado una altura mínima para poder empujar hacia abajo el contenido cuando sea necesario */
+    /* Por ejemplo: cuando nombre y precio están a la derecha de imagen, alineados arriba y abajo, respectivamente*/
+    min-height: 42px;
+}
+
+.preu p{
+    text-decoration: line-through;
+    color: var(--poppy);
+
+    /* Mismo caso que el anterior, para que cuando no exista precio de descuento, el precio actual no suba su posición */
+    min-height: 20px;
+}
+
+/* Productos no destacados */
+.moreProducts{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8em 0.4em;
+}
+
+#sectionTitle {
+  text-align: center;
+  margin: 2em 0 0.5em 0;
+}
+
+.moreProducts > div{
+  border: 1px solid var(--poppy);
+  border-radius: 10px;
+  padding: 0.8em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  /* Ajustamos ancho máximo para que se ajuste bien a una pantalla lo más pequeña posible */
+  max-width: 240px;
+}
+
+.moreProducts > div > div{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  column-gap: 0.5em;
+}
+
+.moreProducts .details{
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 105px;
+}
+
+.moreProducts .buy-now, .moreProducts .add-to-cart{
+  width: 100%;
+}
+
+.moreProducts img[alt="producto-1-1"]{
+  height: 105px;
+  width: 105px;
+}
+
+.moreProducts .buy-cart{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.featured > div:hover, .moreProducts > div:hover{
+  background-color: #fcc9ccd2; /*salmon-pink con opacidad*/
+  cursor: pointer;
+}
+
+/* Ocultamos el aside .filters, que solo debe aparecer por defecto en Desktop. En Mobile y Tablet será un popup */
+.filters{
+  display: none;
+}
+
+/* Estilo del filtro de colores */
+.colors{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.color{
+  width: 20px;
+  height: 15px;
+  border-radius: 4px;
+  border: none;
+}
+
+.color:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.color[title="black"]{
+  background-color: #000;
+}
+
+.color[title="white"]{
+  background-color: #fff;
+  border: 1px solid #000;
+}
+
+.color[title="gold"]{
+  background-color: gold;
+}
+
+.color[title="silver"]{
+  background-color: silver;
+}
+
+.color[title="red"]{
+  background-color: red;
+}
+
+.color[title="blue"]{
+  background-color: blue;
+}
+
+.color[title="yellow"]{
+  background-color: rgb(250, 250, 121);
+}
+
+.color[title="orange"]{
+  background-color: orange;
+}
+
+.color[title="green"]{
+  background-color: green;
+}
+
+.color[title="pink"]{
+  background-color: pink;
+}
+
+/* Modificación checkbox */
+/* Esto lo he tenido que buscar y he encotrado diferentes alternativas para hacerlo (lo que he deshechado, lo he dejado comentado igualmente) */
+.filters input[type="checkbox"]{
+  appearance: none;
+  /* -webkit-appearance: none;
+  -moz-appearance: none; */
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--onyx);
+  border-radius: 4px;
+  background-color: transparent;
+  margin-right: 0.4em;
+  cursor: pointer;
+  /* position: relative; */
+  vertical-align: middle;
+}
+
+.filters input[type="checkbox"]:checked{
+  background-color: var(--poppy);
+  border-color: var(--poppy);
+}
+
+.filters input[type="checkbox"]:checked::after{
+  content: "✓";
+  font-weight: 900;
+  color: var(--anti-flash-white);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
+ /*  top: 2px;
+  left: 5px; */
+  /* width: 4px;
+  height: 9px; */
+  /* border: solid var(--anti-flash-white);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg); */
+}
+
+/* Modificación range */
+/* Al igual que el checkbox, he tenido que buscar la manera de hacerlo */
+.price-range li:hover{
+  text-decoration: underline;
+  color: var(--poppy);
+  cursor: pointer;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 90%;
+  height: 8px;
+  background: var(--french-gray);
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 8px;
+  background: var(--french-gray);
+  border-radius: 5px;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 8px;
+  background: var(--french-gray);
+  border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--poppy);
+  border: 2px solid white;
+  margin-top: -5px;
+  transition: 0.2s ease;
+}
+
+
+/* Estilo del popup para Mobile y Tablet */
+.filters-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: #303633b9; /* onyx con opacidad */
+  backdrop-filter: blur(3px); /* Efecto para aplicar blur al fondo y que se vea ligeramente borroso */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+/* Mostrar cuando está activo */
+.filters-overlay.active {
+  display: flex;
+  animation: fadeIn 0.25s ease;
+}
+
+
+/* Estilo del popup */
+.filters {
+  background-color: var(--anti-flash-white);
+  border-radius: 20px;
+  padding: 1.5em;
+  max-width: 340px;
+  width: 85%;
+  overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  position: relative; /* Nos servirá para cuando se añada el botón de cierre del popup */
+  animation: slideUp 0.3s ease;
+}
+
+/* Animaciones con keyframes que he buscado */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.filters input[type="submit"] {
+  background-color: var(--poppy);
+  color: var(--anti-flash-white);
+  border: none;
+  border-radius: 10px;
+  padding: 0.8em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.filters input[type="submit"]:hover {
+  background-color: var(--salmon-pink); 
+}
+
+.filters form{
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.filters h3{
+  padding-bottom: 0.2em;
+}
+
+/* Botón de cierre para el popup */
+.filters .close-filters {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: var(--poppy);
+  cursor: pointer;
+}
+
+/* Ajuste para establecer cuando es popup y cuando un aside fijo */
+@media (max-width: 1024px) {
+  .filters-overlay.active {
+    display: flex;
+  }
+
+  .filters {
+    display: flex;
+  }
+
+  .container > .filters {
+    display: none;
+  }
+}
+
+/* Ajustes del tamaño de los botones para agrandarlos a medida que crezca la pantalla */
+@media (min-width: 350px){
+  .featured .buy-now{
+    width: 150px;
+  }
+}
+
+@media (min-width: 450px){
+  .featured .add-to-cart{
+    width: 110px;
+  }
+}
+
+@media (min-width: 500px){
+  .featured .buy-now{
+    width: 180px;
+  }
+}
+
+/*TABLET*/
+@media (min-width: 577px){
+
+    /* Los productos destacados pasan a estar en row, pero con la posibilidad de ajustarse a la pantalla con wrap */
+    .featured{
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0.5em;
+      justify-content: center;
+    }
+
+    .featured > div{
+      min-width: unset;
+      max-width: 220px;
+    }
+
+    /* Dejamos atrás las imágenes 3:2. A partir de ahora, solo aparecerán imágenes 1:1 */
+    img[alt="producto-3-2"]{
+      display: none;
+    }
+
+    .featured img[alt="producto-1-1"]{
+      display: initial;
+    }
+
+    .featured > div > div:last-child{
+      flex-direction: column-reverse;
+      justify-content: left;
+      align-items: start;
+      gap: 0.5em;
+    }
+
+    .buy-cart{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .featured .buy-now{
+      width: 100%;
+    }
+
+    .preu{
+      align-items: start;
+    }
+
+    /* A la sección de productos no destacados le quitamos el wrap para poder ajustarla a un slider horizontal */
+    .moreProducts{
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+      gap: 1em;
+
+      /* Definimos el slider y su tipo de desplazamiento (scroll-behavior) */
+      overflow-x: auto;
+      scroll-behavior: smooth;
+    }
+
+    .moreProducts > div{
+      flex: 0 0 auto;
+      max-width: 240px;
+    }
+    
+    /* Para cuando exista una palabra demasiado larga que se salga del div correspondiente, fuerzo a que se "rompa" se muestre en dos líneas */
+    .details h4{
+      max-width: 105px;
+      word-wrap: break-word;
+    }
+}
+
+/*DESKTOP*/
+@media(min-width: 1025px) {
+  header{
+    position: fixed;
+  }
+
+  /* Ajustamos el contenedor principal para dar cabida al aside */
+  .container{
+    display: flex;
+    gap: 2em;
+    align-items: stretch;
+  }
+
+  .products-container{
+    margin-left: 220px;
+    width: calc(100vw - 280px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* Escondemos el botón que teníamos en el popup, ya que la intención en Desktop es que los filtros actualicen automáticamente el contenido */
+  .filters input[type="submit"]{
+    display: none;
+  }
+
+  /* Escondemos otros elementos propios del popup como el botón de cierre o el overlay */
+  .filters-overlay {
+    display: none;
+  }
+
+  .filters .close-filters {
+    display: none;
+  }
+
+  /* Ajustamos el estilo del aside */
+  .filters{
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5em;
+    width: 180px;
+    height: 100vh;
+    border-right: 2px solid var(--onyx);
+    padding: 1em;
+    position: fixed;
+    box-shadow: none;
+    border-radius: 0;
+    max-width: none;
+  }
+
+  .filters form{
+    gap: 3em;
+  }
+
+  .featured > div {
+    max-width: 300px;
+  }
+
+  .featured .buy-cart{
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .featured .add-to-cart{
+    width: 100%;
+    margin: 0;
+  }
+
+  .moreProducts{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .moreProducts > div > div{
+    flex-direction: column;
+  }
+
+  .moreProducts img[alt="producto-1-1"]{
+    height: 200px;
+    width: 200px;
+  }
+
+  .moreProducts .details{
+    min-height: unset;
+    gap: 0.2em;
+  }
+
+  .moreProducts .buy-cart{
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .moreProducts .add-to-cart{
+    width: 80px;
+  }
+
+  .details h4{
+      max-width: unset;
+  }
+
+  #sectionTitle {
+    margin: 2em 0 0.5em 0;
+  }
+}
