@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
   products.forEach((product) => {
     product.addEventListener('click', (e) => {
       if(e.target != document.querySelector('.buy-now') && e.target != document.querySelector('.add-to-cart') && e.target != document.querySelector('.wishlist')){
-        location.href = `..${BASE_URL}/views/product_detail.html`;
+        location.href = `${BASE_URL}/views/product_detail.html`;
       }
     });
   });
