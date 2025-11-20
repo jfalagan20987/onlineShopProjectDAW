@@ -1,14 +1,5 @@
 @import "tailwindcss";
 
-/*Paleta de colores*/
-@theme{
-    --color-poppy: #DF2935;
-    --color-anti-flash-white: #EFF1F3;
-    --color-onyx: #303633;
-    --color-salmon-pink: #ED969C;
-    --color-french-gray: #BDC5D9;
-}
-
 /*Fuentes*/
 @font-face {
     font-family: Alexandria;
@@ -20,8 +11,28 @@
     src: url("../assets/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf");
 }
 
+/*Personalizaciones*/
+@theme{
+    --color-poppy: #DF2935;
+    --color-anti-flash-white: #EFF1F3;
+    --color-onyx: #303633;
+    --color-salmon-pink: #ED969C;
+    --color-french-gray: #BDC5D9;
+    --font-alexandria: Alexandria;
+    --font-roboto: Roboto;
+}
+
+
 /* COMPONENTES -- Se han generado, en su mayoría, siguiendo las clases descritas en los .css aplicados en la página principal*/
 @layer components{
+
+  h2, h3{
+    @apply font-alexandria;
+  }
+
+  p, small, input {
+    @apply font-roboto;
+  }
 
   /*Estilo para header y footer*/
   .header-footer{
