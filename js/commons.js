@@ -1,4 +1,4 @@
-const BASE_URL = window.location.hostname === "127.0.0.1" ? "" : "/onlineShop";
+const BASE_URL = window.location.hostname === "127.0.0.1" ? "" : "/onlineShopProjectDAW";
 document.addEventListener("DOMContentLoaded", () => {
 
   // Variables necesarias para controles de menús y desplazamiento básico
