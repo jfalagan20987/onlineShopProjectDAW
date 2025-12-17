@@ -1,4 +1,47 @@
-const BASE_URL = window.location.hostname === "127.0.0.1" ? "" : "/onlineShopProjectDAW";
+/* const BASE_URL = window.location.hostname === "127.0.0.1" ? "" : "/onlineShopProjectDAW"; */
+
+let BASE_URL;
+
+if (window.location.hostname === "127.0.0.1") {
+    // Live Server
+    BASE_URL = "";
+} else if (window.location.hostname === "localhost") {
+    // WAMP local
+    BASE_URL = "/student012/shop";
+} else if (window.location.hostname === "remotehost.es") {
+    // WAMP remoto
+    BASE_URL = "/student012/shop";
+} else {
+    // GitHub Pages u otro servidor estático
+    BASE_URL = "/onlineShopProjectDAW";
+}
+
+// -------------------------------
+// BACKEND API URL (PHP)
+// -------------------------------
+let API_URL;
+
+// 1️⃣ Live Server → usar backend en WAMP local
+if (window.location.port === "5500") {
+    API_URL = "http://localhost/student012/shop/backend";
+}
+
+// 2️⃣ WAMP local en localhost
+else if (window.location.hostname === "localhost") {
+    API_URL = "/student012/shop/backend";
+}
+
+// 3️⃣ WAMP remoto
+else if (window.location.hostname === "remotehost.es") {
+    API_URL = "/student012/shop/backend";
+}
+
+// 4️⃣ GitHub Pages → No hay PHP
+else {
+    API_URL = null;
+    console.warn("⚠ El backend PHP no está disponible en este entorno.");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
   // Variables necesarias para controles de menús y desplazamiento básico
@@ -10,7 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const arrowups = document.querySelectorAll(".arrowup");
   const footer = document.querySelector("footer");
   const logos = document.querySelectorAll('.logo');
-  const products = document.querySelectorAll('#product');
+  const products = document.querySelectorAll('.product');
+  const shoppingCart = document.querySelector('img[alt="shopping-cart"]');
 
   // Control de la versión de dropdown y arrowup que he necesitado copiar y pegar porque no era capaz de hacerlo
   // EXPLICACIÓN DE ERROR PENDIENTE DE SOLUCIONAR
@@ -65,9 +109,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   products.forEach((product) => {
     product.addEventListener('click', (e) => {
-      if(e.target != document.querySelector('.buy-now') && e.target != document.querySelector('.add-to-cart') && e.target != document.querySelector('.wishlist')){
-        location.href = `${BASE_URL}/views/product_detail.html`;
+      if (
+        !e.target.classList.contains('buy-now') &&
+        !e.target.classList.contains('add-to-cart') &&
+        !e.target.classList.contains('wishlist')
+      ) {
+        const productId = product.dataset.id;
+        location.href = `${BASE_URL}/views/product_detail.html?id=${productId}`;
       }
     });
   });
+
+  shoppingCart.addEventListener('click', () => {
+    window.location.href="/student012/shop/backend/db/my_shopping_cart.php";
+  })
+
 });

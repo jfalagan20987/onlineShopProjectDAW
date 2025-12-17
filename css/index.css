@@ -197,7 +197,8 @@ img[alt="producto-3-2"], img[alt="producto-1-1"]{
   gap: 0.5em;
 }
 
-.color{
+/*NO NECESARIO TRAS APLICAR LOS ESTILOS DE LOS RADIO BUTTONS*/
+/* .color{
   width: 20px;
   height: 15px;
   border-radius: 4px;
@@ -248,7 +249,7 @@ img[alt="producto-3-2"], img[alt="producto-1-1"]{
 
 .color[title="pink"]{
   background-color: pink;
-}
+} */
 
 /* Modificación checkbox */
 /* Esto lo he tenido que buscar y he encotrado diferentes alternativas para hacerlo (lo que he deshechado, lo he dejado comentado igualmente) */
@@ -274,7 +275,7 @@ img[alt="producto-3-2"], img[alt="producto-1-1"]{
 
 .filters input[type="checkbox"]:checked::after{
   content: "✓";
-  font-weight: 900;
+  font-weight: 800;
   color: var(--anti-flash-white);
   display: flex;
   flex-direction: row;

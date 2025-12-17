@@ -52,7 +52,7 @@
                     </ul>
                 </li>
                 <li><a class="nav-header-a" id="aboutUs" href="#">About us</a></li>
-                <li><a class="nav-header-a" id="settings" href="#">Settings</a></li>
+                <li><a class="nav-header-a" id="settings" href="../backend/index.php">BACKEND - index.php</a></li>
             </ul>
         </nav>
         <div class="flex gap-4 items-center">
@@ -61,7 +61,7 @@
                 <!--Este texto, por cuestiones de espacio, solo se mostrará en Tablet y Desktop-->
                 <p class="hidden font-bold text-onyx sm:flex">Hello, username</p>
             </div>
-            <img class="h-8 cursor-pointer" src="../assets/icons/shopping_cart_black.png" alt="shopping-cart">
+            <a href="./shopping_cart.html"><img class="h-8 cursor-pointer" src="../assets/icons/shopping_cart_black.png" alt="shopping-cart"></a>
         </div>
     </header>
     <main class="bg-anti-flash-white text-onyx min-h-full flex flex-col items-center p-4 gap-6">
@@ -69,7 +69,7 @@
          <section class="product-detail">
             <!--Para la imagen y el botón de wishlist, mantenemos estructura idéntica a la página principal y siempre usamos imágenes 1:1-->
             <div class="relative sm:max-w-1/2">
-                <img class="w-full rounded-xl" src="../assets/img/shoes/shai001_1-1.jpg" alt="producto-1-1">
+                <img id="image_path" class="w-full rounded-xl" src="">
                 <img class="wishlist" src="../assets/icons/wishlist.svg" alt="wishlist">
             </div>
 
@@ -79,10 +79,8 @@
 
                 <!--Juntamos nombre, descripción y valoración media en un mismo apartado-->
                 <div class="flex flex-col items-start gap-1.5">
-                    <h3 class="font-bold text-3xl">SHAI 001</h3>
-                    <p class="text-sm">
-                        Converse releases the first custom shoes for the NBA MVP, Finals MVP and NBA Champion, Shai Gilgeous-Alexander.
-                    </p>
+                    <h3 id="product_name" class="font-bold text-3xl"></h3>
+                    <p id="description" class="text-sm"></p>
                     <div class="font-semibold flex items-center gap-2 self-end">
                         <p>4.7</p>
                         <p>★★★★☆</p> <!--Esto queda pendiente de implementar una valoración media dinámica-->
@@ -119,8 +117,8 @@
 
                         <!--Adjuntamos el precio a este form por una simple cuestión de distribución de los elementos-->
                         <div class="preu">
-                            <p class="line-through text-poppy">149.99€</p>
-                            <h3 class="text-2xl font-bold self-end">129.99€</h3>
+                            <!-- <p class="line-through text-poppy">149.99€</p> -->
+                            <h3 id="unit_price" class="text-2xl font-bold self-end"></h3>
                         </div>
                     </div>
                     <div class="buy-cart">
@@ -212,22 +210,22 @@
             <section>
                 <h2 class="font-bold text-xl mb-4 mt-4 text-center lg:mt-0 lg:mb-0 lg:p-2">SIMILAR PRODUCTS</h2>
                 <div class="similarProducts">
-                    <div id="product">
+                    <div class="product">
                         <img class="rounded-xl" src="../assets/img/shoes/nike-kobe-9_1-1.jpg" alt="producto-1-1">
                     </div>
-                    <div id="product">
+                    <div class="product">
                         <img class="rounded-xl" src="../assets/img/shoes/adidas-harden-9_1-1.jpg" alt="producto-1-1">
                     </div>
-                    <div id="product">
+                    <div class="product">
                         <img class="rounded-xl" src="../assets/img/shoes/adidas-ae-2_1-1.jpg" alt="producto-1-1">
                     </div>
-                    <div id="product">
+                    <div class="product">
                         <img class="rounded-xl" src="../assets/img/shoes/jordan-tatum-3_1-1.jpg" alt="producto-1-1">
                     </div>
-                    <div id="product">
+                    <div class="product">
                         <img class="rounded-xl" src="../assets/img/shoes/curry-4_1-1.jpg" alt="producto-1-1">
                     </div>
-                    <div id="product">
+                    <div class="product">
                         <img class="rounded-xl" src="../assets/img/shoes/kd-18_1-1.jpg" alt="producto-1-1">
                     </div>
                 </div>
@@ -250,8 +248,8 @@
         </div>
     </footer>
 
-    <script src="../js/product_detail.js"></script>
     <script src="../js/commons.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="../js/product_detail.js"></script>
+    <!-- <script src="../js/index.js"></script> -->
 </body>
 </html>

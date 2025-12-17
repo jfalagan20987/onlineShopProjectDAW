@@ -51,4 +51,13 @@ document.addEventListener('DOMContentLoaded', () => {
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay || e.target === closeBtn) closePopup();
   });
+
+
+  // Tratamiento productos con data-id
+  document.querySelectorAll(".product").forEach(product => {
+    product.addEventListener("click", () => {
+        const id = product.dataset.id;
+        window.location.href = `./views/product_detail.html?id=${id}`;
+    });
+  });
 });

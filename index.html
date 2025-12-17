@@ -52,7 +52,7 @@
                     </ul>
                 </li>
                 <li><a id="aboutUs" href="#">About us</a></li>
-                <li><a id="settings" href="#">Settings</a></li>
+                <li><a id="settings" href="./backend/index.php">BACKEND - index.php</a></li>
             </ul>
         </nav>
         <div>
@@ -61,7 +61,7 @@
                 <!--Este texto, por cuestiones de espacio, solo se mostrará en Tablet y Desktop-->
                 <p>Hello, username</p>
             </div>
-            <img src="./assets/icons/shopping_cart_black.png" alt="shopping-cart">
+            <a href="./views/shopping_cart.html"><img src="./assets/icons/shopping_cart_black.png" alt="shopping-cart"></a>
         </div>
 
     </header>
@@ -94,16 +94,18 @@
                     <section class="filter">
                         <h3>Colors</h3>
                         <div class="colors">
-                            <button class="color" title="black"></button>
-                            <button class="color" title="white"></button>
-                            <button class="color" title="gold"></button>
-                            <button class="color" title="silver"></button>
-                            <button class="color" title="red"></button>
-                            <button class="color" title="blue"></button>
-                            <button class="color" title="yellow"></button>
-                            <button class="color" title="orange"></button>
-                            <button class="color" title="green"></button>
-                            <button class="color" title="pink"></button>
+                            <label for="color">
+                                <input type="radio" name="color-1" id="gold" class="color-radio gold">
+                                <input type="radio" name="color-1" id="black" class="color-radio black">
+                                <input type="radio" name="color-1" id="white" class="color-radio white">
+                                <input type="radio" name="color-1" id="silver" class="color-radio silver">
+                                <input type="radio" name="color-1" id="purple" class="color-radio purple">
+                                <input type="radio" name="color-1" id="blue" class="color-radio blue">
+                                <input type="radio" name="color-1" id="red" class="color-radio red">
+                                <input type="radio" name="color-1" id="yellow" class="color-radio yellow">
+                                <input type="radio" name="color-1" id="green" class="color-radio green">
+                                <input type="radio" name="color-1" id="pink" class="color-radio orange">
+                            </label>
                         </div>
                     </section>
                     
@@ -136,7 +138,7 @@
 
                 <!--Sección destacados donde, en principio, la idea es que aparezcan descuentos de productos destacados-->
                 <section class="featured">
-                    <div id="product">
+                    <div class="product" data-id="1">
                         <!--Para la sección destacados vamos alternando con imágenes 3:2 (Mobile) y 1:1 (Tablet y Desktop)-->
                         <div>
                             <img src="./assets/img/shoes/shai001_3-2.jpg" alt="producto-3-2">
@@ -159,7 +161,7 @@
                         </div>
                     </div>
                     
-                    <div id="product">
+                    <div class="product" data-id="2">
                         <div>
                             <img src="./assets/img/shoes/curry-4_3-2.jpg" alt="producto-3-2">
                             <img src="./assets/img/shoes/curry-4_1-1.jpg" alt="producto-1-1">
@@ -178,7 +180,7 @@
                         </div>
                     </div>
         
-                    <div id="product">
+                    <div class="product" data-id="3">
                         <div>
                             <img src="./assets/img/shoes/kd-18_3-2.jpg" alt="producto-3-2">
                             <img src="./assets/img/shoes/kd-18_1-1.jpg" alt="producto-1-1">
@@ -197,7 +199,7 @@
                         </div>
                     </div>
         
-                    <div id="product">
+                    <div class="product" data-id="4">
                         <div>
                             <img src="./assets/img/shoes/lebron-9_3-2.jpg" alt="producto-3-2">
                             <img src="./assets/img/shoes/lebron-9_1-1.jpg" alt="producto-1-1">
@@ -221,7 +223,7 @@
                 <!--Segunda sección de productos-->
                 <h2 id="sectionTitle">MORE PRODUCTS</h2>
                 <section class="moreProducts">
-                    <div id="product">
+                    <div class="product" data-id="5">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/jordan-tatum-3_1-1.jpg" alt="producto-1-1">
@@ -242,7 +244,7 @@
                         </div>
                     </div>
         
-                    <div id="product">
+                    <div class="product" data-id="6">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/adidas-ae-2_1-1.jpg" alt="producto-1-1">
@@ -263,7 +265,7 @@
                         </div>
                     </div>
         
-                    <div id="product">
+                    <div class="product" data-id="7">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/jordan-giannis-immortality-4_1-1.jpg" alt="producto-1-1">
@@ -284,7 +286,7 @@
                         </div>
                     </div>
         
-                    <div id="product">
+                    <div class="product" data-id="8">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/jordan-luka_1-1.jpg" alt="producto-1-1">
@@ -305,7 +307,7 @@
                         </div>
                     </div>
         
-                    <div id="product">
+                    <div class="product" data-id="9">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/adidas-harden-9_1-1.jpg" alt="producto-1-1">
@@ -326,7 +328,7 @@
                         </div>
                     </div>
         
-                    <div id="product">
+                    <div class="product" data-id="10">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/nike-book-1_1-1.jpg" alt="producto-1-1">
@@ -347,7 +349,7 @@
                         </div>
                     </div>
                     
-                    <div id="product">
+                    <div class="product" data-id="11">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/nike-kobe-9_1-1.jpg" alt="producto-1-1">
@@ -368,7 +370,7 @@
                         </div>
                     </div>
 
-                    <div id="product">
+                    <div class="product" data-id="12">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/jordan-zion-4.jpg" alt="producto-1-1">
@@ -389,7 +391,7 @@
                         </div>
                     </div>
 
-                    <div id="product">
+                    <div class="product" data-id="13">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/reebok-shaqattaq_1-1.jpg" alt="producto-1-1">
@@ -410,7 +412,7 @@
                         </div>
                     </div>
                     
-                    <div id="product">
+                    <div class="product" data-id="14">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/nike-zoom-freak-5_1-1.jpg" alt="producto-1-1">

@@ -23,7 +23,7 @@
         mysqli_query($conn, $sql);
     ?>
         <script>
-            window.location.href="/student012/shop/backend/index.php";
+            window.location.href="/student012/shop/backend/views/customers.php";
         </script>
 <?php };?>
 
@@ -69,8 +69,7 @@
             <input class="font-normal bg-white border border-solid border-onyx rounded pl-1" type="password" name="password" id="password">
         </p>
 
-        <input class="rounded bg-poppy border-0 p-1.5 w-full text-anti-flash-white font-bold cursor-pointer hover:scale-110 self-center" type="submit" name="submit" value="Register">
+        <input class="rounded bg-poppy border-0 p-1.5 w-full text-anti-flash-white font-bold cursor-pointer hover:scale-110 self-center" type="submit" name="submit" value="Add customer">
     </form>
 </main>
-
 <?php require($_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/footer.php'); ?>

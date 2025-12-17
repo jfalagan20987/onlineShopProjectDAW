@@ -164,7 +164,7 @@
   /*Estilo para cada producto, del que solo mostraremos su imagen*/
   /*Se especifica que no puede hacerse más pequeño para que funcione en el slider horizontal de Tablet. 
     Sino, disminuiría de tamaño hasta cuadrar todos los productos en el ancho de la página*/
-  #product{
+  .product{
     @apply p-3 border border-solid border-poppy rounded-xl shrink-0 w-44 cursor-pointer hover:bg-red-200;
   }
 }

@@ -16,33 +16,32 @@
     $category_id = $product[0]['category_id'];
     $description = $product[0]['description'];
     $unit_price = $product[0]['unit_price'];
-
-    
+   
 ?>
-<?php    
-        if(isset($_POST['submit'])){
-        //Get data
-        $product_id = $_POST['product_id'];
-        $product_name = $_POST['product_name'];
-        $category_id = $_POST['category_id'];
-        $description = $_POST['description'];
-        $unit_price = $_POST['unit_price'];
+<?php
+    if(isset($_POST['submit'])){
+    //Get data
+    $product_id = $_POST['product_id'];
+    $product_name = $_POST['product_name'];
+    $category_id = $_POST['category_id'];
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    $unit_price = $_POST['unit_price'];
 
-        //Update data in the database
-        $sql = "UPDATE `012_products` SET
-                product_name = '$product_name', category_id = $category_id, `description` = '$description', unit_price = $unit_price
-                WHERE product_id = $product_id;";
+    //Update data in the database
+    $sql = "UPDATE `012_products` SET
+            product_name = '$product_name', category_id = $category_id, `description` = '$description', unit_price = $unit_price
+            WHERE product_id = $product_id;";
 
-        // Connect and send confirmation
-        include($_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/config/db_connect.php');
-        mysqli_query($conn, $sql);
-        
-        // Redirect to products.php
-        ?>
-        <script>
-          window.location.href="/student012/shop/backend/views/products.php";
-        </script>
-   <?php };?>
+    // Connect and send confirmation
+    include($_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/config/db_connect.php');
+    mysqli_query($conn, $sql);
+    
+    // Redirect to products.php
+    ?>
+    <script>
+        window.location.href="/student012/shop/backend/views/products.php";
+    </script>
+<?php };?>
 
 <main class="flex items-center justify-center mt-0 bg-anti-flash-white">
     <form class="flex flex-col items-start justify-center m-10 gap-2 border-2 border-solid border-poppy rounded-2xl p-10" method="POST">

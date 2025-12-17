@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
       
       $sql = "SELECT *
           FROM `012_customers`
-          WHERE username = '$user' AND `password` = '$pwd';";
+          WHERE username = '$user' AND `password` = '$pwd' OR email = '$user' AND `password` = '$pwd';";
       
       require($_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/config/db_connect.php');
       $result = mysqli_query($conn, $sql);
@@ -56,8 +56,8 @@ if(isset($_POST['submit'])){
 <main class="flex items-center justify-center mt-0 bg-anti-flash-white">
   <form class="flex flex-col items-center justify-center m-48 gap-10 border-2 border-solid border-poppy rounded-2xl p-10 w-96" method="POST">
     <h3 class="text-center font-bold text-xl">SIGN IN</h3>
-    <p>
-      Username:
+    <p class="flex flex-col">
+      Username or Email:
             <input type="text" name="user" id="user" autocomplete="off" class="bg-white border-2 border-onyx rounded pl-1 focus:border-2 focus:outline-0 focus:border-salmon-pink">
             <small class="text-poppy">
               <?php
@@ -69,7 +69,7 @@ if(isset($_POST['submit'])){
             </small>
         </p>
 
-        <p>
+        <p class="flex flex-col">
             Password:
             <input type="password" name="pwd" id="pwd" class="bg-white border-2 border-onyx rounded pl-1 focus:border-2 focus:outline-0 focus:border-salmon-pink">
             <small class="text-poppy">

@@ -1,11 +1,12 @@
 :root{
-    --poppy: #DF2935;
-    --anti-flash-white: #EFF1F3;
-    --onyx: #303633;
-    --salmon-pink: #ED969C;
-    --french-gray: #BDC5D9;
+  --poppy: #DF2935;
+  --anti-flash-white: #EFF1F3;
+  --onyx: #303633;
+  --salmon-pink: #ED969C;
+  --french-gray: #BDC5D9;
 }
 
+/*SCROLLBAR*/
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -24,4 +25,97 @@
 ::-webkit-scrollbar-thumb:hover {
   background: var(--onyx);
   cursor: pointer;
+}
+
+/*RADIO BUTTONS*/
+.color-radio {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--onyx);
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+/*Colores que están en la base de datos -- Ir añadiendo según necesidad*/
+.color-radio.gold { background-color: gold; }
+.color-radio.black { background-color: black; }
+.color-radio.white { background-color: white; }
+.color-radio.silver { background-color: silver; }
+.color-radio.purple { background-color: purple; }
+.color-radio.blue { background-color: blue; }
+.color-radio.red { background-color: red; }
+.color-radio.yellow { background-color: yellow; }
+.color-radio.green { background-color: green; }
+.color-radio.orange { background-color: orange; }
+.color-radio.pink { background-color: pink; }
+
+/*Estilo del check (✔) que se muesrta al hacer click*/
+.color-radio::before {
+    content: "✔";
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s;
+}
+
+/*Grupo de colores que tienen el check (✔) de color BLANCO*/
+.color-radio.black:checked::before,
+.color-radio.purple:checked::before,
+.color-radio.blue:checked::before,
+.color-radio.red:checked::before,
+.color-radio.green:checked::before {
+    color: white;
+}
+
+/*Grupo de colores que tienen el check (✔) de color NEGRO*/
+.color-radio.white:checked::before,
+.color-radio.silver:checked::before,
+.color-radio.yellow:checked::before,
+.color-radio.gold:checked::before,
+.color-radio.pink:checked::before,
+.color-radio.orange:checked::before {
+    color: black;
+}
+
+/*Animación para el check (✔)*/
+.color-radio:checked::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+/*IMAGE UPLOAD -- ADMIN PANEL*/
+.custom-file {
+    position: relative;
+    display: inline-block;
+    width: 250px;
+}
+
+.custom-file:hover .custom-file-label {
+    background-color: var(--salmon-pink);
+    cursor: pointer;
+}
+
+.custom-file input[type="file"] {
+    width: 100%;
+    height: 40px;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.custom-file-label {
+    display: block;
+    padding: 1px;
+    background-color: white;
+    border: 1px solid var(--onyx);
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
 }
