@@ -1,22 +1,24 @@
 @import './_variables.scss';
 @import './_mixins.scss';
 
+/*Inicialización rutinaria*/
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   list-style: none;
-  font-family: Roboto;
+  font-family: $pfont;
 }
 
 h3, h4 {
-  font-family: Alexandria;
+  font-family: $hfont;
 }
 
 body {
   height: 100vh;
 }
 
+/*Mixin para header y footer, ya que tienen características comunes*/
 header, footer {
   @include header-footer(100%, $french-gray);
   display: flex;
@@ -34,11 +36,13 @@ header div, footer div{
   gap: 1em;
 }
 
+/*Nesting HEADER*/
 header {
   position: sticky;
   top: 0;
   z-index: 3;
 
+  /*Manejo del nav y submenus*/
   .no-scroll {
     overflow: hidden;
   }
@@ -134,9 +138,13 @@ header {
   }
 }
 
+/*Nesting MAIN*/
 main{
+  /*Incluimos el mixin del main*/
   @include main(calc(100vh - 140px), $onyx, $anti-flash-white);
 
+  /*Aunque este buscador solo existe en index.html, simulamos que aplicamos SASS para toda la web,
+  así que también maquetamos elementos comunes aunque no los vayamos a usar en shopping_cart.html*/
   .buscador{
     display: flex;
     align-items: center;

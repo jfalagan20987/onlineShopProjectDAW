@@ -19,6 +19,7 @@
       FROM `012_products` 
       WHERE product_id = ?
   ");
+  
   if (!$stmt) {
       echo json_encode(["error" => "Database error: prepare failed"]);
       exit;

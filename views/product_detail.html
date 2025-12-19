@@ -68,14 +68,14 @@
         <!--Sección que contiene los detalles del producto-->
          <section class="product-detail">
             <!--Para la imagen y el botón de wishlist, mantenemos estructura idéntica a la página principal y siempre usamos imágenes 1:1-->
-            <div class="relative sm:max-w-1/2">
-                <img id="image_path" class="w-full rounded-xl" src="">
+            <div class="relative sm:w-1/2">
+                <img id="image_path" class="w-full sm:w-[365px] rounded-xl" src="">
                 <img class="wishlist" src="../assets/icons/wishlist.svg" alt="wishlist">
             </div>
 
             <!--Apartado con todos los detalles (nombre, descripción, valoración media, color, cantidad, talla, precio y botones)-->
             <!--En Mobile: aparecerá debajo de la imagen -- En Tablet y Desktop: a la derecha de la imagen-->
-            <div class="flex flex-col gap-1 sm:pr-2">
+            <div class="flex flex-col gap-1 sm:pr-2 sm:w-[320px] sm:h-[320px] md:h-[365px] sm:justify-between">
 
                 <!--Juntamos nombre, descripción y valoración media en un mismo apartado-->
                 <div class="flex flex-col items-start gap-1.5">
@@ -89,7 +89,7 @@
 
                 <!--Encajonamos en un form los elementos que tendrán influencia para añadir al carrito o comprar el producto-->
                 <form class="flex flex-col gap-4">
-                    <label for="color" class="flex items-center gap-2 font-semibold">Color:
+                    <label for="color" class="flex items-center gap-0.5 font-semibold">Color:
                         <button class="color bg-amber-400 cursor-pointer hover:border hover:border-solid hover:border-onyx" title="gold"></button>
                         <button class="color bg-gray-400 cursor-pointer hover:border hover:border-solid hover:border-onyx" title="silver"></button>
                         <button class="color bg-blue-300 cursor-pointer hover:border hover:border-solid hover:border-onyx" title="blue"></button>
@@ -248,8 +248,10 @@
         </div>
     </footer>
 
+    <div id="message"></div>
+
     <script src="../js/commons.js"></script>
     <script src="../js/product_detail.js"></script>
-    <!-- <script src="../js/index.js"></script> -->
+    <script src="../js/cart.js"></script>
 </body>
 </html>

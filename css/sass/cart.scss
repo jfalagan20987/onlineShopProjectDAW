@@ -1,15 +1,18 @@
 @import './_variables.scss';
 @import './_mixins.scss';
 
+/*Normalmente el header es sticky en toda la web, pero en este caso, quiero que el subtotal gane protagonismo y se muestre por encima
+de otros elementos. Si mantenía el header como sticky, se molestaban uno a otro.*/
 header{
   position: initial;
 }
 
+//Nesting MAIN -- MOBILE
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1em;
+  padding: 2em 1em;
 
   form {
     display: flex;
@@ -56,6 +59,7 @@ main {
       }
     }
 
+    //Contenedor donde se mostrarán todos los productos que contiene el carrito
     .product-list{
       display: flex;
       flex-direction: column;
@@ -66,6 +70,7 @@ main {
       padding: 1.5em;
       width: 100%;
 
+      //Productos del carrito, importando el mixin de la carta de producto
       .product-cart{
         display: flex;
         flex-direction: column;
@@ -79,6 +84,7 @@ main {
           justify-content: space-between;
           gap: 1em;
 
+          //Ajuste para pantallas de móvil más pequeñas
           @media(max-width:380px){
             flex-direction: column;
             justify-content: center;
@@ -136,20 +142,28 @@ main {
           }
         }
   
+        //Filtros que podemos modificar en el carrito
         .filters{
           display: flex;
-          flex-direction: column;
+          flex-direction: column; 
           width: 100%;
           gap: 1em;
 
+          //Colores
           &>div:first-of-type{
             label{
+              font-weight: bold;
               display: flex;
               flex-wrap: wrap;
               align-items: center;
+
+              input{
+                margin-left: 0.5em;
+              }
             }
           }
 
+          //Cantidad y Talla
           &>div:last-of-type{
             display: flex;
             gap: 2em;
@@ -160,13 +174,7 @@ main {
             }
           }
 
-          label[for="color"]{
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 0.5em;
-          }
-
+          //Diseño de los select para cantidad y talla
           select{
             width: 100px;
             padding: 0.2em;
@@ -181,6 +189,7 @@ main {
 
   }
 
+  //Lista de deseos
   .wishlist {
     display: flex;
     flex-wrap: wrap;
@@ -195,6 +204,7 @@ main {
       text-align: center;
     }
 
+    //Diseño de cada producto de la lista de deseos
     .wishlist-item{
       display: flex;
       flex-wrap: wrap;
@@ -222,6 +232,7 @@ main {
           align-items: center;
           gap: 2em;
 
+          //Botón de añadir al carrito
           button{
             width: 100px;
             padding: 0.3em;
@@ -238,12 +249,27 @@ main {
     }
   }
 
+  //TABLET
   @media(min-width: 640px){
     flex-direction: row;
     gap: 1em;
 
-
+    /*A partir de aquí, la lista de deseos tiene una altura máxima, para que quede más acorde al contenedor del carrito y la página no crezca
+    de manera poco simétrica en el eje vertical*/
     .wishlist{
+      max-height: 500px;
+      overflow-y: auto;
+
+      //Mismo comportamiento que el subtotal del contendor del carrito
+      h2{
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        max-width: 100%;
+        background-color: $french-gray;
+        padding: 0.5em 0;
+        border-radius: 5px;
+      }
       .wishlist-item{
         flex-wrap: nowrap;
         width: 240px;
@@ -263,14 +289,18 @@ main {
     }
   }
 
+  //Pequeño ajuste para pantallas de Tablet más anchas y que el contenido respire un poco más
   @media (min-width: 800px) {
     form{
       margin-left: 2em;
     }
   }
 
+  //DESKTOP
+  /*Tratamos de aprovechar el espacio. Apenas hay modificaciones, por lo que en vez de agrandar en exceso los elementos, 
+  dejaremos más espacios a su alrededor para que el contenido no se sienta tan cargado*/
   @media (min-width: 1024px){
-    padding: 0 8em 0 8em;
+    padding: 2em 8em 2em 8em;
     margin-left: 0;
     gap: 2em;
     

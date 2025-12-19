@@ -1,15 +1,18 @@
+/*Header y footer*/
 @mixin header-footer($width, $bg-color){
   width: $width;
   background-color: $bg-color;
   padding: 20px;
 }
 
+/*Main*/
 @mixin main($min-height, $color, $bg-color){
   min-height: calc(100vh - 140px);
   color: $color;
   background-color: $bg-color;
 }
 
+/*Cartas de producto en el shopping cart*/
 @mixin product-card($width, $border, $border-radius){
   width: $width;
   border: $border;

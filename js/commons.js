@@ -1,45 +1,57 @@
 /* const BASE_URL = window.location.hostname === "127.0.0.1" ? "" : "/onlineShopProjectDAW"; */
 
+//Variables relacionadas con el URL y cómo van a cambiar para que todo funcione en Live Server, Github Pages, Localhost y remotehost.es
 let BASE_URL;
 
 if (window.location.hostname === "127.0.0.1") {
-    // Live Server
+    //Live Server
     BASE_URL = "";
 } else if (window.location.hostname === "localhost") {
-    // WAMP local
+    //Localhost
     BASE_URL = "/student012/shop";
 } else if (window.location.hostname === "remotehost.es") {
-    // WAMP remoto
+    //remotehost.es
     BASE_URL = "/student012/shop";
 } else {
-    // GitHub Pages u otro servidor estático
+    //GitHub Pages
     BASE_URL = "/onlineShopProjectDAW";
 }
 
-// -------------------------------
-// BACKEND API URL (PHP)
-// -------------------------------
+//BACKEND API URL (PHP)
 let API_URL;
 
-// 1️⃣ Live Server → usar backend en WAMP local
+//Live Server
 if (window.location.port === "5500") {
     API_URL = "http://localhost/student012/shop/backend";
 }
-
-// 2️⃣ WAMP local en localhost
+//Localhost
 else if (window.location.hostname === "localhost") {
     API_URL = "/student012/shop/backend";
 }
-
-// 3️⃣ WAMP remoto
+//remotehost.es
 else if (window.location.hostname === "remotehost.es") {
     API_URL = "/student012/shop/backend";
 }
-
-// 4️⃣ GitHub Pages → No hay PHP
+//Github Pages -- Backend PHP no está disponible
 else {
     API_URL = null;
-    console.warn("⚠ El backend PHP no está disponible en este entorno.");
+}
+
+//URL para extraer ciertos assets y no encontrar problemas con rutas absolutas como la que genera la columna "image_path" de la tabla 012_products
+let ASSETS_URL;
+
+if (window.location.hostname === "127.0.0.1") {
+    ASSETS_URL = "http://localhost";
+}
+else if (window.location.hostname === "localhost") {
+    ASSETS_URL = "";
+}
+else if (window.location.hostname === "remotehost.es") {
+    ASSETS_URL = "";
+}
+else {
+    //GitHub Pages
+    ASSETS_URL = "https://remotehost.es";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -120,8 +132,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+
+  //Acceso a shopping_cart.html
   shoppingCart.addEventListener('click', () => {
     window.location.href="/student012/shop/backend/db/my_shopping_cart.php";
   })
 
+  //Función extendida a otros JS para los mensajes en forma de popup -- Establecemos una duración predeterminada de 5 segundos
+  window.showMessage = function(content, duration = 5000) {
+    const container = document.getElementById("message");
+    if (!container) return;
+
+    const message = document.createElement("div");
+    message.className = "message-popup";
+    message.textContent = content;
+
+    container.appendChild(message);
+
+    //Animación de entrada -- Ni idea de que existía esto en JavaScript
+    requestAnimationFrame(() => {
+      message.classList.add("show");
+    });
+
+    //timeout para que desaparezca
+    setTimeout(() => {
+      message.classList.remove("show");
+      message.addEventListener("transitionend", () => message.remove());
+    }, duration);
+  }
 });
