@@ -15,27 +15,20 @@
     <img class="logo" src="../assets/logos/logo_long_shift_and_go.png" alt="logo-long">
     <img class="logo" src="../assets/logos/logo_shift_and_go.png" alt="logo">
 
-    <!--nav que será un desplegable en Mobile y Tablet, pero que estará fijo en Desktop-->
     <nav id="nav-header">
         <div id="btn-close">
             <img src="../assets/icons/close_menu.png" alt="close-menu">
         </div>
-        <!--Buscador de la versión Desktop, que debe encontrarse dentro del header a diferencia de las versiones Mobile y Tablet-->
         <div class="buscador">
             <input type="search" name="search" placeholder="Search products..." autocomplete="off">
         </div>
-
-        <!--Contenido del nav-->
         <ul>
             <li><a id="index" href="../index.html">Home</a></li>
             <li>
                 <div>
                     <a id="categories" href="#">Categories</a>
-
-                    <!--Iconos para controlar el submenu en dos colores distintos que controlaremos con data-variant en JavaScript-->
                     <img src="../assets/icons/dropdown.svg" alt="dropdown" class="dropdown" data-variant="white">
                     <img src="../assets/icons/arrowup.svg" alt="arrowup" class="arrowup" data-variant="white">
-
                     <img src="../assets/icons/dropdown-onyx.svg" alt="dropdown" class="dropdown" data-variant="onyx">
                     <img src="../assets/icons/arrowup-onyx.svg" alt="arrowup" class="arrowup" data-variant="onyx">
                 </div>
@@ -57,7 +50,6 @@
     <div>
         <div class="user">
             <img src="../assets/icons/user.png" alt="user">
-            <!--Este texto, por cuestiones de espacio, solo se mostrará en Tablet y Desktop-->
             <p>Hello, username</p>
         </div>
         <a href="./shopping_cart.html"><img src="../assets/icons/shopping_cart_black.png" alt="shopping-cart"></a>
@@ -66,128 +58,76 @@
 
   <main>
     <form action="#">
-        <div class="subtotal">
-            <p>Subtotal: <span>0.00€</span></p>
-            <input type="submit" value="ORDER NOW">
-        </div>
-        <div class="product-list">
-            <!-- </div>
-            <div class="product-cart">
-                <div>
-                    <img src="../assets/img/shoes/adidas-harden-9_1-1.jpg" alt="product">
-                    <div>
-                        <h2>Adidas Harden 9</h2>
-                        <div>
-                            <div class="price">
-                                <p></p>
-                                <h2>159.99€</h2>
-                            </div>
-                            <div>
-                                <img src="../assets/icons/wishlist.svg" alt="wishlist">
-                                <img src="../assets/icons/bin.svg" alt="bin">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="filters">
-                    <div>
-                        <label for="color">Color:
-                            <input type="radio" name="color-3" id="red" class="color-radio red">
-                            <input type="radio" name="color-3" id="black" class="color-radio black">
-                        </label>
-                    </div>
-                    <div>
-                        <label for="quantity">
-                            <select name="quantity" id="quantity">
-                                <option value="1">Quantity: 1</option>
-                                <option value="2">Quantity: 2</option>
-                                <option value="3">Quantity: 3</option>
-                                <option value="4">Quantity: 4</option>
-                                <option value="5">Quantity: 5</option>
-                                <option value="6">Quantity: 6</option>
-                                <option value="7">Quantity: 7</option>
-                                <option value="8">Quantity: 8</option>
-                                <option value="9">Quantity: 9</option>
-                                <option value="10">Quantity: 10</option>
-                            </select>
-                        </label>
-        
-                        <label for="size">
-                            <select name="size" id="size">
-                                <option value="40">Size: 40</option>
-                                <option value="41">Size: 41</option>
-                                <option value="42">Size: 42</option>
-                                <option value="43">Size: 43</option>
-                                <option value="44">Size: 44</option>
-                                <option value="45">Size: 45</option>
-                                <option value="46">Size: 46</option>
-                                <option value="47">Size: 47</option>
-                            </select>
-                        </label>
-                    </div>
-                </div>
-            </div> -->
-        </div>
+      <!--Subtotal dinámico-->
+      <div class="subtotal">
+        <p>Subtotal: <span>0.00€</span></p>
+        <input type="submit" value="ORDER NOW">
+      </div>
+
+      <!--Lista de productos que se genera de manera dinámica-->
+      <div class="product-list">
+        <!--Con cart.js, añadiremos todos los productos-->
+      </div>
     </form>
 
+    <!--Wishlist (todavía estática)-->
     <section class="wishlist">
-        <h2>Your wishlist</h2>
+      <h2>Your wishlist</h2>
       <div class="wishlist-item">
         <img src="../assets/img/shoes/kd-18_1-1.jpg" alt="product-wishlist">
         <div>
-            <h3>Nike KD 18</h3>
-            <div>
-                <h4>169.99€</h4>
-                <button><img src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
-            </div>
+          <h3>Nike KD 18</h3>
+          <div>
+            <h4>169.99€</h4>
+            <button><img src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+          </div>
         </div>
       </div>
       <div class="wishlist-item">
         <img src="../assets/img/shoes/adidas-ae-2_1-1.jpg" alt="product-wishlist">
         <div>
-            <h3>Adidas AE 2</h3>
-            <div>
-                <h4>129.99€</h4>
-                <button><img src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
-            </div>
+          <h3>Adidas AE 2</h3>
+          <div>
+            <h4>129.99€</h4>
+            <button><img src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+          </div>
         </div>
       </div>
       <div class="wishlist-item">
         <img src="../assets/img/shoes/curry-4_1-1.jpg" alt="product-wishlist">
         <div>
-            <h3>UA Curry 4</h3>
-            <div>
-                <h4>85.00€</h4>
-                <button><img src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
-            </div>
+          <h3>UA Curry 4</h3>
+          <div>
+            <h4>85.00€</h4>
+            <button><img src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+          </div>
         </div>
       </div>
       <div class="wishlist-item">
         <img src="../assets/img/shoes/nike-zoom-freak-5_1-1.jpg" alt="product-wishlist">
         <div>
-            <h3>Nike Zoom Freak 5</h3>
-            <div>
-                <h4>85.00€</h4>
-                <button><img src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
-            </div>
+          <h3>Nike Zoom Freak 5</h3>
+          <div>
+            <h4>85.00€</h4>
+            <button><img src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!--Footer, donde siempre se usaará el logo principal-->
   <footer>
-      <img src="../assets/logos/logo_shift_and_go.png" alt="logo">
-      <div>
-          <p>©Shift & Go all rights reserved</p>
-          <p>Terms & Policy</p>
-          <p>Contact</p>
-      </div>
-      <div>
-          <img src="../assets/img/instagram-logo.png" alt="instagram-logo">
-          <img src="../assets/img/twitter-logo.png" alt="twitter-logo">
-          <img src="../assets/img/facebook-logo.png" alt="facebook-logo">
-      </div>
+    <img src="../assets/logos/logo_shift_and_go.png" alt="logo">
+    <div>
+      <p>©Shift & Go all rights reserved</p>
+      <p>Terms & Policy</p>
+      <p>Contact</p>
+    </div>
+    <div>
+      <img src="../assets/img/instagram-logo.png" alt="instagram-logo">
+      <img src="../assets/img/twitter-logo.png" alt="twitter-logo">
+      <img src="../assets/img/facebook-logo.png" alt="facebook-logo">
+    </div>
   </footer>
 
   <div id="message"></div>

@@ -166,7 +166,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       card.remove();
       recalculateSubtotal();
+<<<<<<< HEAD
       showMessage("Product removed");
+=======
+>>>>>>> 716e414a675dd951b5b28a931e2e8011314b7ced
     });
   });
 });
