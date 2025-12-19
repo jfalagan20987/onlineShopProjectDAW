@@ -4,7 +4,7 @@
     $product_id = $_POST['product_id'];
 
     //Search by ID
-    $sql = "SELECT product_name, category_id, `description`, unit_price
+    $sql = "SELECT product_name, category_id, `description`, unit_price, color
             FROM `012_products`
             WHERE product_id = $product_id;";
 
@@ -16,6 +16,8 @@
     $category_id = $product[0]['category_id'];
     $description = $product[0]['description'];
     $unit_price = $product[0]['unit_price'];
+
+    $colors = explode(',', $product[0]['color']);
    
 ?>
 <?php
@@ -27,9 +29,11 @@
     $description = mysqli_real_escape_string($conn, $_POST['description']);
     $unit_price = $_POST['unit_price'];
 
+    $colors = isset($_POST['colors']) ? implode(',', $_POST['colors']) : '';
+
     //Update data in the database
     $sql = "UPDATE `012_products` SET
-            product_name = '$product_name', category_id = $category_id, `description` = '$description', unit_price = $unit_price
+            product_name = '$product_name', category_id = $category_id, `description` = '$description', unit_price = $unit_price, color = '$colors'
             WHERE product_id = $product_id;";
 
     // Connect and send confirmation
@@ -82,15 +86,74 @@
             </label>
         </p>
 
-        <!-- <p>
-            <label for="colors">
-                <p>Colors:</p>
-                <input type="checkbox" name="colors[]" value="black">Black
-                <input type="checkbox" name="colors[]" value="white">White
-                <input type="checkbox" name="colors[]" value="red">Red
-                <input type="checkbox" name="colors[]" value="blue">Blue
-            </label>
-        </p> -->
+        <p class="font-bold">Colors:</p>
+            <p class="flex flex-row flex-wrap gap-2 justify-center w-70">
+                <label>
+                    <input type="checkbox" name="colors[]" value="black"
+                        <?php echo in_array('black', $colors) ? 'checked' : ''; ?>>
+                    Black
+                </label>
+
+                <label>
+                    <input type="checkbox" name="colors[]" value="white"
+                        <?php echo in_array('white', $colors) ? 'checked' : ''; ?>>
+                    White
+                </label>
+
+                <label>
+                    <input type="checkbox" name="colors[]" value="gold"
+                        <?php echo in_array('gold', $colors) ? 'checked' : ''; ?>>
+                    Gold
+                </label>
+
+                <label>
+                    <input type="checkbox" name="colors[]" value="silver"
+                        <?php echo in_array('silver', $colors) ? 'checked' : ''; ?>>
+                    Silver
+                </label>
+
+                <label>
+                    <input type="checkbox" name="colors[]" value="red"
+                        <?php echo in_array('red', $colors) ? 'checked' : ''; ?>>
+                    Red
+                </label>
+                
+                <label>
+                    <input type="checkbox" name="colors[]" value="blue"
+                        <?php echo in_array('blue', $colors) ? 'checked' : ''; ?>>
+                    Blue
+                </label>
+
+                <label>
+                    <input type="checkbox" name="colors[]" value="yellow"
+                        <?php echo in_array('yellow', $colors) ? 'checked' : ''; ?>>
+                    Yellow
+                </label>
+
+                <label>
+                    <input type="checkbox" name="colors[]" value="orange"
+                        <?php echo in_array('orange', $colors) ? 'checked' : ''; ?>>
+                    Orange
+                </label>
+
+                <label>
+                    <input type="checkbox" name="colors[]" value="green"
+                        <?php echo in_array('green', $colors) ? 'checked' : ''; ?>>
+                    Green
+                </label>
+
+                <label>
+                    <input type="checkbox" name="colors[]" value="pink"
+                        <?php echo in_array('pink', $colors) ? 'checked' : ''; ?>>
+                    Pink
+                </label>
+
+                <label>
+                    <input type="checkbox" name="colors[]" value="purple"
+                        <?php echo in_array('purple', $colors) ? 'checked' : ''; ?>>
+                    Purple
+                </label>
+            </p>
 
         <p>
             <label for="unit_price">

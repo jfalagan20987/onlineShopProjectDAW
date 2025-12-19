@@ -119,3 +119,31 @@
     text-align: center;
     cursor: pointer;
 }
+
+/*POPUP PARA NOTIFICACIONES*/
+#message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.message-popup {
+  background-color: var(--poppy);
+  color: var(--anti-flash-white);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px var(--onyx);
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  max-width: 300px;
+}
+
+.message-popup.show {
+  opacity: 1;
+  transform: translateX(0);
+}
