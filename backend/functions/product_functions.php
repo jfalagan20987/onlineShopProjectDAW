@@ -35,14 +35,9 @@ function showProduct($product, $customer_type) {
   
                   <label class="font-bold">Size:
                       <select name="size" class="font-normal bg-white border border-solid border-onyx rounded h-7 w-12">
-                          <option value="40">40</option>
-                          <option value="41">41</option>
-                          <option value="42">42</option>
-                          <option value="43">43</option>
-                          <option value="44">44</option>
-                          <option value="45">45</option>
-                          <option value="46">46</option>
-                          <option value="47">47</option>
+                          <?php foreach (explode(',', $product['size']) as $size): ?>
+                              <option value="<?php echo $size; ?>"><?php echo strtoupper($size); ?></option>
+                          <?php endforeach; ?>
                       </select>
                   </label>
                 </div>

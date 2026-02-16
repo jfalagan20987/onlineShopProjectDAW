@@ -13,6 +13,66 @@
 /*Header y footer*/
 /*Main*/
 /*Cartas de producto en el shopping cart*/
+#accessibility-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+#accessibility-menu {
+  position: fixed;
+  inset: 0;
+  background: #303633;
+  color: #EFF1F3;
+  padding: 1rem;
+  display: none;
+  z-index: 9999;
+}
+
+.accessibility-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.accessibility-container > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contrast-settings {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.contrast-settings button {
+  background: #EFF1F3;
+  border-radius: 12px;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.text-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.reset {
+  background: #ED969C;
+  border-radius: 12px;
+  padding: 1rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
 /*Normalmente el header es sticky en toda la web, pero en este caso, quiero que el subtotal gane protagonismo y se muestre por encima
 de otros elementos. Si mantenía el header como sticky, se molestaban uno a otro.*/
 header {

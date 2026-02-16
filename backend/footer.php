@@ -12,7 +12,7 @@
         </div>
     </footer>
     
-    <script src="/student012/shop/js/backend.js"></script>
+    <!-- <script src="/student012/shop/js/backend.js"></script> -->
     <script src="/student012/shop/js/commons.js"></script>
 </body>
 </html>

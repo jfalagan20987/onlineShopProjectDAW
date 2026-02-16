@@ -7,21 +7,21 @@ main{
 
 /* Disposición inicial de los productos destacados */
 .featured{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    row-gap: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1em;
 }
 
 .featured > div{
-    display: flex;
-    flex-direction: column;
-    row-gap: 0.3em;
-    border: 1px solid var(--poppy);
-    padding: 0.8em;
-    border-radius: 10px;
-    width: 90%;
-    min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.3em;
+  border: 1px solid var(--poppy);
+  padding: 0.8em;
+  border-radius: 10px;
+  width: 90%;
+  min-width: 240px;
 }
 
 img[alt="producto-3-2"], img[alt="producto-1-1"]{
@@ -62,12 +62,14 @@ img[alt="producto-3-2"], img[alt="producto-1-1"]{
   border: none;
   padding: 0.8em 0.8em;
   font-weight: bold;
+  font-size: 1em;
   color: var(--anti-flash-white);
 }
 
 .add-to-cart{
   background-color: var(--anti-flash-white);
   padding: 0.5em;
+  font-size: 1em;
   border: solid 2px var(--poppy);
   margin-left: 0.5em;
 }
@@ -368,6 +370,10 @@ input[type="range"]::-webkit-slider-thumb {
   gap: 1.5em;
   position: relative; /* Nos servirá para cuando se añada el botón de cierre del popup */
   animation: slideUp 0.3s ease;
+
+  font-size: 16px !important;
+  background-color: var(--main-background);
+  color: var(--main-text);
 }
 
 /* Animaciones con keyframes que he buscado */
@@ -564,8 +570,8 @@ input[type="range"]::-webkit-slider-thumb {
     gap: 0.5em;
     width: 180px;
     height: 100vh;
-    border-right: 2px solid var(--onyx);
-    padding: 1em;
+    border-right: 2px solid var(--poppy);
+    padding: 0.5em;
     position: fixed;
     box-shadow: none;
     border-radius: 0;
@@ -573,7 +579,7 @@ input[type="range"]::-webkit-slider-thumb {
   }
 
   .filters form{
-    gap: 3em;
+    gap: 1em;
   }
 
   .featured > div {

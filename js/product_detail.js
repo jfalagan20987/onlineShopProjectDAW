@@ -5,7 +5,13 @@ document.addEventListener("DOMContentLoaded", async () => {
   btnReviews?.addEventListener('click', () => {
     moreReviews.classList.toggle('hidden');
     btnReviews.textContent = moreReviews.classList.contains('hidden') ? 'See more' : 'See less';
+    btnReviews.setAttribute('aria-expanded', !moreReviews.classList.contains('hidden'));
   });
+
+  if (btnReviews && moreReviews) {
+    btnReviews.setAttribute('aria-controls', 'moreReviews');
+    moreReviews.id = 'moreReviews';
+  }
 
   //Hacemos que el contenido sea dinámico con el ID del producto
   const params = new URLSearchParams(window.location.search);
@@ -36,6 +42,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (colorLabel) {
       colorLabel.innerHTML = 'Color: '; //Limpiamos los botones antiguos
 
+      const fieldset = document.createElement('fieldset');
+      const legend = document.createElement('legend');
+      //legend.textContent = 'Color';
+      fieldset.appendChild(legend);
+
       colors.forEach(c => {
         const radio = document.createElement("input");
         radio.type = "radio";
@@ -43,15 +54,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         radio.id = `color-${c}`;
         radio.value = c;
         radio.className = `color-radio ${c}`;
+        radio.setAttribute('aria-label', c);
 
         const label = document.createElement("label");
         label.setAttribute("for", `color-${c}`);
         label.className = "cursor-pointer px-1";
-        label.textContent = "";
+        label.textContent = " ";
 
-        colorLabel.appendChild(radio);
-        colorLabel.appendChild(label);
+        fieldset.appendChild(radio);
+        fieldset.appendChild(label);
       });
+
+      colorLabel.appendChild(fieldset);
+      applySettings();
     }
 
   } catch (error) {
@@ -104,5 +119,20 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     await addToCart(productId, quantity, color, size);
     showMessage("Added to cart");
+  });
+
+  const similarProductsContainer = document.querySelector('.similarProducts');
+
+  similarProductsContainer?.addEventListener('keydown', e => {
+    const product = e.target.closest('.product');
+    if (!product) return;
+
+    if (e.key === 'Enter' || e.key === ' ') {
+      const id = product.dataset.id;
+      if (id) {
+        window.location.href = `./product_detail.html?id=${id}`;
+      }
+      e.preventDefault();
+    }
   });
 });

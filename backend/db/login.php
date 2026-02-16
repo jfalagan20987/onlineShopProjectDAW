@@ -39,6 +39,36 @@ if(isset($_POST['submit'])){
       $_SESSION['customer_id'] = $customer[0]['customer_id'];
       $_SESSION['username'] = $customer[0]['username'];
       $_SESSION['customer_type'] = $customer[0]['customer_type'];
+
+
+      //LOG
+      if($_SESSION['customer_id'] != null){
+        $logDir  = $_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/logs'; //Directory
+        $logFile = $logDir . '/log.txt'; //txt File
+  
+        // Create the directory if it doesn't exist (avoids errors)
+        if (!is_dir($logDir)) mkdir($logDir, 0777, true);
+  
+        //Handle the file: pointer at the bottom -- Open the "connection"
+        $handle = fopen($logFile, 'a+');
+  
+        //Once the handle variable is set, add a new line
+        if ($handle) {
+            $customer_id = $_SESSION['customer_id'];
+            $username = $_SESSION['username'] ?? 'unknown';
+  
+            //Our timestamp with the desired format
+            date_default_timezone_set('Europe/Madrid');
+            $date = date('Y-m-d H:i:s');
+  
+            //Write the new line
+            fwrite($handle, "Customer $customer_id ($username) has logged in -- $date\n");
+  
+            //Close the "connection" with the file
+            fclose($handle);
+        }
+      }
+
       
       if($customer[0]['customer_type'] == 'admin'){?>
         <script>

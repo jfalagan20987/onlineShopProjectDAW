@@ -1,5 +1,6 @@
 @import './_variables.scss';
 @import './_mixins.scss';
+@import './_accessibility.scss';
 
 /*Inicialización rutinaria*/
 *{
@@ -140,8 +141,10 @@ header {
 
 /*Nesting MAIN*/
 main{
-  /*Incluimos el mixin del main*/
-  @include main(calc(100vh - 140px), $onyx, $anti-flash-white);
+  /*Nos cargamos el mixin que había para poder jugar con los modos de color de accesibilidad*/
+  min-height: calc(100vh - 140px);
+  background-color: var($main-background);
+  color: var($main-text);
 
   /*Aunque este buscador solo existe en index.html, simulamos que aplicamos SASS para toda la web,
   así que también maquetamos elementos comunes aunque no los vayamos a usar en shopping_cart.html*/

@@ -66,14 +66,9 @@
 
                         <label class="font-bold">Size:
                             <select name="size" class="font-normal bg-white border border-solid border-onyx rounded h-7 w-12">
-                                <option value="40">40</option>
-                                <option value="41">41</option>
-                                <option value="42">42</option>
-                                <option value="43">43</option>
-                                <option value="44">44</option>
-                                <option value="45">45</option>
-                                <option value="46">46</option>
-                                <option value="47">47</option>
+                                ${product.size.split(',').map(size =>
+                                    `<option value="${size}">${size.toUpperCase()}</option>`
+                                ).join('')}
                             </select>
                         </label>
                     </div>
@@ -102,14 +97,9 @@
 
                         <label class="font-bold">Size:
                             <select name="size" class="font-normal bg-white border border-solid border-onyx rounded h-7 w-12">
-                                <option value="40">40</option>
-                                <option value="41">41</option>
-                                <option value="42">42</option>
-                                <option value="43">43</option>
-                                <option value="44">44</option>
-                                <option value="45">45</option>
-                                <option value="46">46</option>
-                                <option value="47">47</option>
+                                ${product.size.split(',').map(size =>
+                                    `<option value="${size}">${size.toUpperCase()}</option>`
+                                ).join('')}
                             </select>
                         </label>
                     </div>

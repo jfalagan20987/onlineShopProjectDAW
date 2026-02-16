@@ -34,7 +34,7 @@
   if(isset($_POST['submit'])){
 
     //random order number and address_id
-    $order_number = str_pad(rand(1000, 999999), 6, '0', STR_PAD_LEFT);
+    $order_number = rand(1000, 999999);
     $address_id = getAddressId($customer_id);
 
     $sql= "INSERT INTO `012_orders` (order_number, customer_id, product_id, quantity, unit_price, address_id)
@@ -45,8 +45,15 @@
     include($_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/config/db_connect.php');
     $result = mysqli_query($conn, $sql);
 
-    $sql = "DELETE FROM `012_shopping_cart` WHERE customer_id = $customer_id;";
+    $order_number_to_send = $order_number;
+    require($_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/endpoints/insert_supplier_orders.php');
+    
+    require($_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/mail/send_order_email.php');
+    $customer_email = "jfalagan20987@iesjoanramis.org";
+    sendOrderEmail($order_number, $customer_email);
+
     include($_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/config/db_connect.php');
+    $sql = "DELETE FROM `012_shopping_cart` WHERE customer_id = $customer_id;";
     $result = mysqli_query($conn, $sql);
 
     ?>
@@ -89,7 +96,7 @@
       </div>
       <div class="mb-2 flex items-center justify-between w-full font-bold text-2xl">
         <h4>TOTAL:</h4>
-        <h4><?php echo $total;?> €</h4>
+        <h4><?php echo number_format($total, 2);?> €</h4>
       </div>
     </div>
 

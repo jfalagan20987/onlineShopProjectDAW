@@ -31,6 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/student012/shop/css/output.css">
     <link rel="stylesheet" href="/student012/shop/css/scrollbar.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <title>Shift & Go</title>
 </head>
 <body class="m-0 p-0 box-border list-none font-roboto text-onyx h-screen">

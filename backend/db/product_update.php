@@ -4,7 +4,7 @@
     $product_id = $_POST['product_id'];
 
     //Search by ID
-    $sql = "SELECT product_name, category_id, `description`, unit_price, color
+    $sql = "SELECT product_name, category_id, `description`, unit_price, color, `size`
             FROM `012_products`
             WHERE product_id = $product_id;";
 
@@ -12,12 +12,15 @@
     include($_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/config/db_connect.php');
     $result = mysqli_query($conn, $sql);
     $product = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
     $product_name = $product[0]['product_name'];
     $category_id = $product[0]['category_id'];
     $description = $product[0]['description'];
     $unit_price = $product[0]['unit_price'];
 
-    $colors = explode(',', $product[0]['color']);
+    // Get selected colors and sizes
+    $selectedColors = explode(',', $product[0]['color']);
+    $selectedSizes = explode(',', $product[0]['size']);
    
 ?>
 <?php
@@ -30,10 +33,11 @@
     $unit_price = $_POST['unit_price'];
 
     $colors = isset($_POST['colors']) ? implode(',', $_POST['colors']) : '';
+    $sizes = isset($_POST['sizes']) ? implode(',', $_POST['sizes']) : '';
 
     //Update data in the database
     $sql = "UPDATE `012_products` SET
-            product_name = '$product_name', category_id = $category_id, `description` = '$description', unit_price = $unit_price, color = '$colors'
+            product_name = '$product_name', category_id = $category_id, `description` = '$description', unit_price = $unit_price, color = '$colors', `size` = '$sizes'
             WHERE product_id = $product_id;";
 
     // Connect and send confirmation
@@ -86,74 +90,51 @@
             </label>
         </p>
 
+        <p class="font-bold">Size:</p>
+        <p class="grid grid-cols-4 gap-4 place-items-center">
+        <?php
+        $sizes = ['40','41','42','43','44','45','46','47'];
+
+        foreach($sizes as $size):
+        ?>
+
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox"
+                    name="sizes[]"
+                    value="<?= $size ?>"
+                    <?= in_array($size, $selectedSizes) ? 'checked' : '' ?>>
+                <span><?= $size ?></span>
+            </label>
+
+        <?php endforeach; ?>
+
+        </p>
+
         <p class="font-bold">Colors:</p>
-            <p class="flex flex-row flex-wrap gap-2 justify-center w-70">
-                <label>
-                    <input type="checkbox" name="colors[]" value="black"
-                        <?php echo in_array('black', $colors) ? 'checked' : ''; ?>>
-                    Black
-                </label>
+        <?php
+            //COLORS
+            $colors = [
+                'black','white','gold','silver','red','blue',
+                'yellow','orange','green','pink','purple'
+            ];
+        ?>
 
-                <label>
-                    <input type="checkbox" name="colors[]" value="white"
-                        <?php echo in_array('white', $colors) ? 'checked' : ''; ?>>
-                    White
-                </label>
+        <p class="grid grid-cols-2 md:grid-cols-3 gap-4">
 
-                <label>
-                    <input type="checkbox" name="colors[]" value="gold"
-                        <?php echo in_array('gold', $colors) ? 'checked' : ''; ?>>
-                    Gold
-                </label>
+        <?php foreach($colors as $color): ?>
 
-                <label>
-                    <input type="checkbox" name="colors[]" value="silver"
-                        <?php echo in_array('silver', $colors) ? 'checked' : ''; ?>>
-                    Silver
-                </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="<?= $color ?>"
+                    class="color-radio <?= $color ?>"
+                    <?= in_array($color, $selectedColors) ? 'checked' : '' ?>>
+                <span><?= ucfirst($color) ?></span>
+            </label>
 
-                <label>
-                    <input type="checkbox" name="colors[]" value="red"
-                        <?php echo in_array('red', $colors) ? 'checked' : ''; ?>>
-                    Red
-                </label>
-                
-                <label>
-                    <input type="checkbox" name="colors[]" value="blue"
-                        <?php echo in_array('blue', $colors) ? 'checked' : ''; ?>>
-                    Blue
-                </label>
+        <?php endforeach; ?>
 
-                <label>
-                    <input type="checkbox" name="colors[]" value="yellow"
-                        <?php echo in_array('yellow', $colors) ? 'checked' : ''; ?>>
-                    Yellow
-                </label>
-
-                <label>
-                    <input type="checkbox" name="colors[]" value="orange"
-                        <?php echo in_array('orange', $colors) ? 'checked' : ''; ?>>
-                    Orange
-                </label>
-
-                <label>
-                    <input type="checkbox" name="colors[]" value="green"
-                        <?php echo in_array('green', $colors) ? 'checked' : ''; ?>>
-                    Green
-                </label>
-
-                <label>
-                    <input type="checkbox" name="colors[]" value="pink"
-                        <?php echo in_array('pink', $colors) ? 'checked' : ''; ?>>
-                    Pink
-                </label>
-
-                <label>
-                    <input type="checkbox" name="colors[]" value="purple"
-                        <?php echo in_array('purple', $colors) ? 'checked' : ''; ?>>
-                    Purple
-                </label>
-            </p>
+        </p>
+        
+        
 
         <p>
             <label for="unit_price">

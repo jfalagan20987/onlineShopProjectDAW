@@ -3,75 +3,143 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../css/sass/commons.css">
   <link rel="stylesheet" href="../css/sass/cart.css">
+  <link rel="stylesheet" href="../css/sass/commons.css">
   <link rel="stylesheet" href="../css/scrollbar.css">
+  <link rel="stylesheet" href="../css/sass/_accessibility.css">
   <title>Shift & Go</title>
 </head>
 <body>
   <header>
-    <img id="btn-menu" src="../assets/icons/menu_burger.png" alt="menu-burger">
+    <img id="btn-menu" src="../assets/icons/menu_burger.png" alt="menu-burger" aria-label="Open menu" role="button" tabindex="0">
     <img class="logo" src="../assets/logos/logo_small_shift_and_go.png" alt="logo-small">
     <img class="logo" src="../assets/logos/logo_long_shift_and_go.png" alt="logo-long">
     <img class="logo" src="../assets/logos/logo_shift_and_go.png" alt="logo">
 
-    <nav id="nav-header">
+    <nav id="nav-header" role="navigation" aria-label="Navigation menu">
         <div id="btn-close">
-            <img src="../assets/icons/close_menu.png" alt="close-menu">
+            <img src="../assets/icons/close_menu.png" alt="close-menu" aria-label="Close navigation menu" role="button" tabindex="0">
         </div>
         <div class="buscador">
-            <input type="search" name="search" placeholder="Search products..." autocomplete="off">
+            <input type="search" name="search" placeholder="Search products..." autocomplete="off" aria-label="Search products">
         </div>
         <ul>
             <li><a id="index" href="../index.html">Home</a></li>
             <li>
                 <div>
                     <a id="categories" href="#">Categories</a>
-                    <img src="../assets/icons/dropdown.svg" alt="dropdown" class="dropdown" data-variant="white">
-                    <img src="../assets/icons/arrowup.svg" alt="arrowup" class="arrowup" data-variant="white">
-                    <img src="../assets/icons/dropdown-onyx.svg" alt="dropdown" class="dropdown" data-variant="onyx">
-                    <img src="../assets/icons/arrowup-onyx.svg" alt="arrowup" class="arrowup" data-variant="onyx">
+                    <img src="../assets/icons/dropdown.svg" alt="dropdown" class="dropdown" data-variant="white" role="button" tabindex="0">
+                    <img src="../assets/icons/arrowup.svg" alt="arrowup" class="arrowup" data-variant="white" role="button" tabindex="0">
+                    <img src="../assets/icons/dropdown-onyx.svg" alt="dropdown" class="dropdown" data-variant="onyx" role="button" tabindex="0">
+                    <img src="../assets/icons/arrowup-onyx.svg" alt="arrowup" class="arrowup" data-variant="onyx" role="button" tabindex="0">
                 </div>
-                <ul class="submenu">
-                    <li><a href="#">Adidas</a></li>
-                    <li><a href="#">Converse</a></li>
-                    <li><a href="#">Jordan</a></li>
-                    <li><a href="#">New Balance</a></li>
-                    <li><a href="#">Nike</a></li>
-                    <li><a href="#">Puma</a></li>
-                    <li><a href="#">Reebok</a></li>
-                    <li><a href="#">Under Armour</a></li>
+                <ul class="submenu" role="menu">
+                    <li><a href="#" role="menuitem">Adidas</a></li>
+                    <li><a href="#" role="menuitem">Converse</a></li>
+                    <li><a href="#" role="menuitem">Jordan</a></li>
+                    <li><a href="#" role="menuitem">New Balance</a></li>
+                    <li><a href="#" role="menuitem">Nike</a></li>
+                    <li><a href="#" role="menuitem">Puma</a></li>
+                    <li><a href="#" role="menuitem">Reebok</a></li>
+                    <li><a href="#" role="menuitem">Under Armour</a></li>
                 </ul>
             </li>
-            <li><a id="aboutUs" href="#">About us</a></li>
-            <li><a id="settings" href="../backend/index.php">BACKEND - index.php</a></li>
+            <li><a id="aboutUs" href="#" aria-label="About us">About us</a></li>
+            <li><a id="settings" href="../backend/index.php" aria-label="Backend access">BACKEND - index.php</a></li>
         </ul>
     </nav>
     <div>
         <div class="user">
-            <img src="../assets/icons/user.png" alt="user">
+            <img src="../assets/icons/user.png" alt="user" aria-label="User profile">
             <p>Hello, username</p>
         </div>
-        <a href="./shopping_cart.html"><img src="../assets/icons/shopping_cart_black.png" alt="shopping-cart"></a>
+        <a href="./shopping_cart.html" aria-label="Shopping cart"><img src="../assets/icons/shopping_cart_black.png" alt="shopping-cart"></a>
     </div>
   </header>
 
-  <main>
-    <form action="#">
+  <!--CONTENEDOR ACCESIBILIDAD-->
+    <div id="accessibility-menu" role="dialog" aria-label="Accessibility settings">
+        <div class="accessibility-container">
+            <div>
+                <h2>Accessibility settings</h2>
+                <img src="../assets/icons/accessibility-icons/close-accessibility.svg" alt="close-accessibility" aria-label="Close accessibility menu" role="button" tabindex="0">
+            </div>
+    
+            <!--Opciones de contraste-->
+            <section class="contrast-settings">
+                <button data-contrast="normal" aria-label="Normal contrast">
+                    <img src="../assets/icons/accessibility-icons/normal.svg" alt="normal-contrast">
+                    <p>Normal</p>
+                </button>
+                <button data-contrast="gray" aria-label="Grayscale mode">
+                    <img src="../assets/icons/accessibility-icons/grayscale.svg" alt="grayscale">
+                    <p>Grayscale</p>
+                </button>
+                <button data-contrast="saturation" aria-label="Saturation mode">
+                    <img src="../assets/icons/accessibility-icons/saturation.svg" alt="saturation">
+                    <p>Saturation</p>
+                </button>
+                <button data-contrast="dark" aria-label="Dark mode">
+                    <img src="../assets/icons/accessibility-icons/dark-mode.svg" alt="dark-mode">
+                    <p>Dark Mode</p>
+                </button>
+                <button data-contrast="light" aria-label="Light mode">
+                    <img src="../assets/icons/accessibility-icons/light-mode.svg" alt="light-mode">
+                    <p>Light Mode</p>
+                </button>
+            </section>
+    
+            <!--Opciones de texto-->
+            <section class="text-settings">
+                <button id="fontSize-minus" aria-label="Decrease text size">
+                    <img src="../assets/icons/accessibility-icons/font-minus.svg" alt="font-minus">
+                    <p>Text decrease</p>
+                </button>
+                <button id="fontSize-plus" aria-label="Increase text size">
+                    <img src="../assets/icons/accessibility-icons/font-plus.svg" alt="font-plus">
+                    <p>Text increase</p>
+                </button>
+                <button id="line-spacing" aria-label="Modify line spacing">
+                    <img src="../assets/icons/accessibility-icons/line-spacing.svg" alt="line-spacing">
+                    <p>Line spacing</p>
+                </button>
+                <button id="word-spacing" aria-label="Modify word spacing">
+                    <img src="../assets/icons/accessibility-icons/word-spacing.svg" alt="word-spacing">
+                    <p>Word spacing</p>
+                </button>
+                <button id="letter-spacing" aria-label="Modify letter spacing">
+                    <img src="../assets/icons/accessibility-icons/letter-spacing.svg" alt="letter-spacing">
+                    <p>Letter spacing</p>
+                </button>
+            </section>
+    
+            <!--Opción de reseteo-->
+            <button class="reset" aria-label="Restore accessibility default settings">
+                <img src="../assets/icons/accessibility-icons/reset.svg" alt="reset">
+                <p>Restore all values</p>
+            </button>
+
+            <!--Información textual de la opción aplicada-->
+            <p class="status" aria-live="polite" aria-label="Accessibility setting applied"></p>
+        </div>
+    </div>
+
+  <main id="accessibility-content">
+    <form action="#" aria-label="Purchase form">
       <!--Subtotal dinámico-->
-      <div class="subtotal">
+      <div class="subtotal" aria-label="Total price">
         <p>Subtotal: <span>0.00€</span></p>
-        <input type="submit" value="ORDER NOW">
+        <input type="submit" value="ORDER NOW" role="button" tabindex="0">
       </div>
 
       <!--Lista de productos que se genera de manera dinámica-->
-      <div class="product-list">
+      <div class="product-list" aria-label="List of products">
         <!--Con cart.js, añadiremos todos los productos-->
       </div>
     </form>
 
     <!--Wishlist (todavía estática)-->
-    <section class="wishlist">
+    <section class="wishlist" aria-label="Your wishlist">
       <h2>Your wishlist</h2>
       <div class="wishlist-item">
         <img src="../assets/img/shoes/kd-18_1-1.jpg" alt="product-wishlist">
@@ -130,9 +198,14 @@
     </div>
   </footer>
 
-  <div id="message"></div>
+  <div id="message" aria-live="polite"></div>
 
+  <!--BOTÓN ACCESIBILIDAD-->
+  <img src="../assets/icons/accessibility-icons/accessibility-icon.svg" alt="accessibility-icon" id="accessibility-btn" aria-label="Accessibility menu" role="button" tabindex="0">
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="../js/commons.js"></script>
+  <script src="../js/accessibility.js"></script>
   <script src="../js/cart.js"></script>
 </body>
 </html>
