@@ -34,3 +34,4 @@ echo json_encode([
   "success" => true,
   "affected_rows" => $stmt->affected_rows
 ]);
+?>
