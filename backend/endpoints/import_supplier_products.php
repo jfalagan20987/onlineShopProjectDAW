@@ -2,7 +2,7 @@
 
 require($_SERVER['DOCUMENT_ROOT'].'/student012/shop/backend/config/db_connect.php');
 
-$apikey = "85c712e7-6a84-4a5a-87a3-47b25df6771b";
+$apikey = " ";
 $url = "https://remotehost.es/student024/Shop/backend/endpoints/sellers/sellers_products.php?apikey=$apikey";
 
 $curl = curl_init();
