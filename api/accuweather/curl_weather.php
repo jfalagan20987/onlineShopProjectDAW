@@ -1,5 +1,5 @@
 <?php 
-  $developers_key = "zpka_0fb27bf1a70441198a73024c762021e7_9b957bb0";
+  $developers_key = " ";
   $location_key = "305482";
 
   $apikey="12345josep";
