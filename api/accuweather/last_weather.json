@@ -1,0 +1,25 @@
+[
+    {
+        "LocalObservationDateTime": "2026-01-19T16:42:00+01:00",
+        "EpochTime": 1768837320,
+        "WeatherText": "Light rain",
+        "WeatherIcon": 12,
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "IsDayTime": true,
+        "Temperature": {
+            "Metric": {
+                "Value": 13.2,
+                "Unit": "C",
+                "UnitType": 17
+            },
+            "Imperial": {
+                "Value": 56,
+                "Unit": "F",
+                "UnitType": 18
+            }
+        },
+        "MobileLink": "http:\/\/www.accuweather.com\/en\/es\/mao\/305482\/current-weather\/305482?lang=en-us",
+        "Link": "http:\/\/www.accuweather.com\/en\/es\/mao\/305482\/current-weather\/305482?lang=en-us"
+    }
+]

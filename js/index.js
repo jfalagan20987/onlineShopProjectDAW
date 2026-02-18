@@ -33,6 +33,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
   });
 
+  filterIcon.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' '){
+      if (!overlay.contains(filtersAside)) {
+        filtersAside.prepend(closeBtn);
+        overlay.appendChild(filtersAside);
+      }
+
+      // Añadimos la clase active declarada en index.css para activar el overlay
+      overlay.classList.add('active');
+
+      // Desactivamos el scroll de fondo mientras el popup está desplegado
+      document.body.style.overflow = 'hidden';
+    }
+  })
+
   // Variable con una función para cerrar el popup
   const closePopup = () => {
 
@@ -93,22 +108,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //Añadir productos al carrito
   document.querySelectorAll('.product .add-to-cart').forEach(btn => {
-  btn.addEventListener('click', async (e) => {
-    e.stopPropagation();
-    const productElegido = btn.closest('.product');
-    if (!productElegido) return console.error("Producto no encontrado");
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const productElegido = btn.closest('.product');
+      if (!productElegido) return console.error("Producto no encontrado");
 
-    const productId = productElegido.dataset.id;
-    if (!productId) return console.error("productId no definido");
+      const productId = productElegido.dataset.id;
+      if (!productId) return console.error("productId no definido");
 
-    const quantity = 1;
-    const color = null;
-    const size = null;
+      const quantity = 1;
+      const color = null;
+      const size = null;
 
-    //console.log("Añadiendo al carrito:", { productId, quantity, color, size });
+      //console.log("Añadiendo al carrito:", { productId, quantity, color, size });
 
-    await addToCart(productId, quantity, color, size);
-    showMessage("Added to cart"); //Lanzamos el mensaje con el popup
+      await addToCart(productId, quantity, color, size);
+      showMessage("Added to cart"); //Lanzamos el mensaje con el popup
+    });
   });
-});
 });

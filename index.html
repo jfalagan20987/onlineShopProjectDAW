@@ -11,82 +11,148 @@
 <body>
     <!--Header con el logo en tres formatos distintos que se usarán según conveniencia-->
     <header>
-        <img id="btn-menu" src="./assets/icons/menu_burger.png" alt="menu-burger">
+        <img id="btn-menu" src="./assets/icons/menu_burger.png" alt="menu-burger" aria-label="Open menu" role="button" tabindex="0">
         <img class="logo" src="./assets/logos/logo_small_shift_and_go.png" alt="logo-small">
         <img class="logo" src="./assets/logos/logo_long_shift_and_go.png" alt="logo-long">
         <img class="logo" src="./assets/logos/logo_shift_and_go.png" alt="logo">
 
         <!--nav que será un desplegable en Mobile y Tablet, pero que estará fijo en Desktop-->
-        <nav id="nav-header">
+        <nav id="nav-header" role="navigation" aria-label="Navigation menu">
             <div id="btn-close">
-                <img src="./assets/icons/close_menu.png" alt="close-menu">
+                <img src="./assets/icons/close_menu.png" alt="close-menu" aria-label="Close navigation menu" role="button" tabindex="0">
             </div>
             <!--Buscador de la versión Desktop, que debe encontrarse dentro del header a diferencia de las versiones Mobile y Tablet-->
             <div class="buscador">
-                <input type="search" name="search" placeholder="Search products..." autocomplete="off">
+                <input type="search" name="search" placeholder="Search products..." autocomplete="off" aria-label="Search products">
             </div>
 
             <!--Contenido del nav-->
             <ul>
-                <li><a id="index" href="./index.html">Home</a></li>
+                <li><a id="index" href="./index.html" aria-current="page">Home</a></li>
                 <li>
                     <div>
                         <a id="categories" href="#">Categories</a>
 
                         <!--Iconos para controlar el submenu en dos colores distintos que controlaremos con data-variant en JavaScript-->
-                        <img src="./assets/icons/dropdown.svg" alt="dropdown" class="dropdown" data-variant="white">
-                        <img src="./assets/icons/arrowup.svg" alt="arrowup" class="arrowup" data-variant="white">
+                        <img src="./assets/icons/dropdown.svg" alt="dropdown" class="dropdown" data-variant="white" role="button" tabindex="0">
+                        <img src="./assets/icons/arrowup.svg" alt="arrowup" class="arrowup" data-variant="white" role="button" tabindex="0">
 
-                        <img src="./assets/icons/dropdown-onyx.svg" alt="dropdown" class="dropdown" data-variant="onyx">
-                        <img src="./assets/icons/arrowup-onyx.svg" alt="arrowup" class="arrowup" data-variant="onyx">
+                        <img src="./assets/icons/dropdown-onyx.svg" alt="dropdown" class="dropdown" data-variant="onyx" role="button" tabindex="0">
+                        <img src="./assets/icons/arrowup-onyx.svg" alt="arrowup" class="arrowup" data-variant="onyx" role="button" tabindex="0">
                     </div>
-                    <ul class="submenu">
-                        <li><a href="#">Adidas</a></li>
-                        <li><a href="#">Converse</a></li>
-                        <li><a href="#">Jordan</a></li>
-                        <li><a href="#">New Balance</a></li>
-                        <li><a href="#">Nike</a></li>
-                        <li><a href="#">Puma</a></li>
-                        <li><a href="#">Reebok</a></li>
-                        <li><a href="#">Under Armour</a></li>
+                    <ul class="submenu" role="menu">
+                        <li><a href="#" role="menuitem" aria-label="Categoría Adidas">Adidas</a></li>
+                        <li><a href="#" role="menuitem" aria-label="Categoría Converse">Converse</a></li>
+                        <li><a href="#" role="menuitem" aria-label="Categoría Jordan">Jordan</a></li>
+                        <li><a href="#" role="menuitem" aria-label="Categoría New Balance">New Balance</a></li>
+                        <li><a href="#" role="menuitem" aria-label="Categoría Nike">Nike</a></li>
+                        <li><a href="#" role="menuitem" aria-label="Categoría Puma">Puma</a></li>
+                        <li><a href="#" role="menuitem" aria-label="Categoría Reebok">Reebok</a></li>
+                        <li><a href="#" role="menuitem" aria-label="Categoría Under Armour">Under Armour</a></li>
                     </ul>
                 </li>
-                <li><a id="aboutUs" href="#">About us</a></li>
-                <li><a id="settings" href="./backend/index.php">BACKEND - index.php</a></li>
+                <li><a id="aboutUs" href="https://shift-and-go-minigame.web.app/" aria-label="Shift & Go REACT minigames">REACT Minigames</a></li>
+                <li><a id="settings" href="./backend/index.php" aria-label="Backend access">BACKEND - index.php</a></li>
             </ul>
         </nav>
         <div>
             <div class="user">
-                <img src="./assets/icons/user.png" alt="user">
+                <img src="./assets/icons/user.png" alt="user" aria-label="User profile">
                 <!--Este texto, por cuestiones de espacio, solo se mostrará en Tablet y Desktop-->
                 <p>Hello, username</p>
             </div>
-            <a href="./views/shopping_cart.html"><img src="./assets/icons/shopping_cart_black.png" alt="shopping-cart"></a>
+            <a href="./views/shopping_cart.html" aria-label="Shopping cart"><img src="./assets/icons/shopping_cart_black.png" alt="shopping-cart"></a>
         </div>
-
     </header>
 
-    <main>
+    <!--CONTENEDOR ACCESIBILIDAD-->
+    <div id="accessibility-menu" role="dialog" aria-label="Accessibility settings">
+        <div class="accessibility-container">
+            <div>
+                <h2>Accessibility settings</h2>
+                <img src="./assets/icons/accessibility-icons/close-accessibility.svg" alt="close-accessibility" aria-label="Close accessibility menu" role="button" tabindex="0">
+            </div>
+    
+            <!--Opciones de contraste-->
+            <section class="contrast-settings">
+                <button data-contrast="normal" aria-label="Normal contrast">
+                    <img src="./assets/icons/accessibility-icons/normal.svg" alt="normal-contrast">
+                    <p>Normal</p>
+                </button>
+                <button data-contrast="gray" aria-label="Grayscale mode">
+                    <img src="./assets/icons/accessibility-icons/grayscale.svg" alt="grayscale">
+                    <p>Grayscale</p>
+                </button>
+                <button data-contrast="saturation" aria-label="Saturation mode">
+                    <img src="./assets/icons/accessibility-icons/saturation.svg" alt="saturation">
+                    <p>Saturation</p>
+                </button>
+                <button data-contrast="dark" aria-label="Dark mode">
+                    <img src="./assets/icons/accessibility-icons/dark-mode.svg" alt="dark-mode">
+                    <p>Dark Mode</p>
+                </button>
+                <button data-contrast="light" aria-label="Light mode">
+                    <img src="./assets/icons/accessibility-icons/light-mode.svg" alt="light-mode">
+                    <p>Light Mode</p>
+                </button>
+            </section>
+    
+            <!--Opciones de texto-->
+            <section class="text-settings">
+                <button id="fontSize-minus" aria-label="Decrease text size">
+                    <img src="./assets/icons/accessibility-icons/font-minus.svg" alt="font-minus">
+                    <p>Text decrease</p>
+                </button>
+                <button id="fontSize-plus" aria-label="Increase text size">
+                    <img src="./assets/icons/accessibility-icons/font-plus.svg" alt="font-plus">
+                    <p>Text increase</p>
+                </button>
+                <button id="line-spacing" aria-label="Modify line spacing">
+                    <img src="./assets/icons/accessibility-icons/line-spacing.svg" alt="line-spacing">
+                    <p>Line spacing</p>
+                </button>
+                <button id="word-spacing" aria-label="Modify word spacing">
+                    <img src="./assets/icons/accessibility-icons/word-spacing.svg" alt="word-spacing">
+                    <p>Word spacing</p>
+                </button>
+                <button id="letter-spacing" aria-label="Modify letter spacing">
+                    <img src="./assets/icons/accessibility-icons/letter-spacing.svg" alt="letter-spacing">
+                    <p>Letter spacing</p>
+                </button>
+            </section>
+    
+            <!--Opción de reseteo-->
+            <button class="reset" aria-label="Restore accessibility default settings">
+                <img src="./assets/icons/accessibility-icons/reset.svg" alt="reset">
+                <p>Restore all values</p>
+            </button>
+
+            <!--Información textual de la opción aplicada-->
+            <p class="status" aria-live="polite" aria-label="Accessibility setting applied"></p>
+        </div>
+    </div>
+
+    <main id="accessibility-content">
         
         <div class="container">
 
             <!--Aside que será fijo en Desktop, pero que se transformará en un popup para Mobile y Tablet-->
             <!--Funcionará como un form para comunicarse con la base de datos cuando llegue el momento-->
-            <aside class="filters">
-                <form action="#">
+            <aside class="filters" aria-label="Product filters">
+                <form action="#" role="search">
 
                     <!--Selector múltiple de categorías mediante checkbox-->
                     <section class="filter">
                         <h3>Brands</h3>
                         <ul>
-                            <li><label for="categories"><input type="checkbox" name="categories" id="adidas">Adidas</label></li>
-                            <li><label for="categories"><input type="checkbox" name="categories" id="converse">Converse</label></li>
-                            <li><label for="categories"><input type="checkbox" name="categories" id="jordan">Jordan</label></li>
-                            <li><label for="categories"><input type="checkbox" name="categories" id="newbalance">New Balance</label></li>
-                            <li><label for="categories"><input type="checkbox" name="categories" id="nike">Nike</label></li>
-                            <li><label for="categories"><input type="checkbox" name="categories" id="puma">Puma</label></li>
-                            <li><label for="categories"><input type="checkbox" name="categories" id="reebok">Reebok</label></li>
-                            <li><label for="categories"><input type="checkbox" name="categories" id="underarmour">Under Armour</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="adidas" aria-label="Categoría Adidas">Adidas</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="converse" aria-label="Categoría Converse">Converse</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="jordan" aria-label="Categoría Jordan">Jordan</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="newbalance" aria-label="Categoría New Balance">New Balance</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="nike" aria-label="Categoría Nike">Nike</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="puma" aria-label="Categoría Puma">Puma</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="reebok" aria-label="Categoría Reebok">Reebok</label></li>
+                            <li><label for="categories"><input type="checkbox" name="categories" id="underarmour" aria-label="Categoría Under Armour">Under Armour</label></li>
                         </ul>
                     </section>
                     
@@ -95,16 +161,17 @@
                         <h3>Colors</h3>
                         <div class="colors">
                             <label for="color">
-                                <input type="radio" name="color-1" id="gold" class="color-radio gold">
-                                <input type="radio" name="color-1" id="black" class="color-radio black">
-                                <input type="radio" name="color-1" id="white" class="color-radio white">
-                                <input type="radio" name="color-1" id="silver" class="color-radio silver">
-                                <input type="radio" name="color-1" id="purple" class="color-radio purple">
-                                <input type="radio" name="color-1" id="blue" class="color-radio blue">
-                                <input type="radio" name="color-1" id="red" class="color-radio red">
-                                <input type="radio" name="color-1" id="yellow" class="color-radio yellow">
-                                <input type="radio" name="color-1" id="green" class="color-radio green">
-                                <input type="radio" name="color-1" id="pink" class="color-radio orange">
+                                <input type="radio" name="color-1" id="gold" class="color-radio gold" aria-label="Gold color">
+                                <input type="radio" name="color-1" id="black" class="color-radio black" aria-label="Black color">
+                                <input type="radio" name="color-1" id="white" class="color-radio white" aria-label="White color">
+                                <input type="radio" name="color-1" id="silver" class="color-radio silver" aria-label="Silver color">
+                                <input type="radio" name="color-1" id="purple" class="color-radio purple" aria-label="Purple color">
+                                <input type="radio" name="color-1" id="blue" class="color-radio blue" aria-label="Blue color">
+                                <input type="radio" name="color-1" id="red" class="color-radio red" aria-label="Red color">
+                                <input type="radio" name="color-1" id="yellow" class="color-radio yellow" aria-label="Yellow color">
+                                <input type="radio" name="color-1" id="green" class="color-radio green" aria-label="Green color">
+                                <input type="radio" name="color-1" id="orange" class="color-radio orange" aria-label="Orange color">
+                                <input type="radio" name="color-1" id="pink" class="color-radio pink" aria-label="Pink color">
                             </label>
                         </div>
                     </section>
@@ -112,7 +179,7 @@
                     <!--Un rango de precio donde, en el futuro, debería incluir que tenga dos botones para fijar mínimo y máximo (todavía no sé cómo hacerlo)-->
                     <section class="filter">
                         <h3>Price range</h3>
-                        <input type="range" min="0" max="300" step="5">
+                        <input type="range" min="0" max="300" step="5" aria-label="Select price range">
                         <ul class="price-range">
                             <li>0 to 25€</li>
                             <li>25 to 50€</li>
@@ -123,7 +190,7 @@
                     </section>
 
                     <!--El submit del form que solo aparece cuando está en formato popup. Mi idea es que en Desktop se actualice cada vez que el usuario modifique un filtro-->
-                    <input type="submit" value="SEARCH">
+                    <input type="submit" value="SEARCH" aria-label="Search products">
                 </form>
             </aside>
             
@@ -132,18 +199,18 @@
 
                 <!--Buscador para Mobile y Tablet, que debe aparecer en el main y con un botón para desplegar el popup de los filtros-->
                 <div class="buscador">
-                    <input type="search" name="search" placeholder="Search products..." autocomplete="off">
-                    <img src="./assets/icons/filter.svg" alt="filter">
+                    <input type="search" name="search" placeholder="Search products..." autocomplete="off" aria-label="Search products">
+                    <img src="./assets/icons/filter.svg" alt="filter" aria-label="Open filters" role="button" tabindex="0">
                 </div>
 
                 <!--Sección destacados donde, en principio, la idea es que aparezcan descuentos de productos destacados-->
-                <section class="featured">
-                    <div class="product" data-id="1">
+                <section class="featured" aria-label="Featured products">
+                    <div class="product" data-id="1" role="article" tabindex="0">
                         <!--Para la sección destacados vamos alternando con imágenes 3:2 (Mobile) y 1:1 (Tablet y Desktop)-->
                         <div>
                             <img src="./assets/img/shoes/shai001_3-2.jpg" alt="producto-3-2">
                             <img src="./assets/img/shoes/shai001_1-1.jpg" alt="producto-1-1">
-                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                         </div>
                         <h3>SHAI 001</h3>
                         <div>
@@ -161,11 +228,11 @@
                         </div>
                     </div>
                     
-                    <div class="product" data-id="2">
+                    <div class="product" data-id="2" role="article" tabindex="0">
                         <div>
                             <img src="./assets/img/shoes/curry-4_3-2.jpg" alt="producto-3-2">
                             <img src="./assets/img/shoes/curry-4_1-1.jpg" alt="producto-1-1">
-                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                         </div>
                         <h3>UA Curry 4</h3>
                         <div>
@@ -180,11 +247,11 @@
                         </div>
                     </div>
         
-                    <div class="product" data-id="3">
+                    <div class="product" data-id="3" role="article" tabindex="0">
                         <div>
                             <img src="./assets/img/shoes/kd-18_3-2.jpg" alt="producto-3-2">
                             <img src="./assets/img/shoes/kd-18_1-1.jpg" alt="producto-1-1">
-                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                         </div>
                         <h3>Nike KD 18</h3>
                         <div>
@@ -199,11 +266,11 @@
                         </div>
                     </div>
         
-                    <div class="product" data-id="4">
+                    <div class="product" data-id="4" role="article" tabindex="0">
                         <div>
                             <img src="./assets/img/shoes/lebron-9_3-2.jpg" alt="producto-3-2">
                             <img src="./assets/img/shoes/lebron-9_1-1.jpg" alt="producto-1-1">
-                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                            <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                         </div>
                         <h3>Nike LeBron 9</h3>
                         <div>
@@ -223,11 +290,11 @@
                 <!--Segunda sección de productos-->
                 <h2 id="sectionTitle">MORE PRODUCTS</h2>
                 <section class="moreProducts">
-                    <div class="product" data-id="5">
+                    <div class="product" data-id="5" role="article" tabindex="0">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/jordan-tatum-3_1-1.jpg" alt="producto-1-1">
-                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                             </div>
                             <div class="details">
                                 <h4>Jordan Tatum 3</h4>
@@ -244,11 +311,11 @@
                         </div>
                     </div>
         
-                    <div class="product" data-id="6">
+                    <div class="product" data-id="6" role="article" tabindex="0">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/adidas-ae-2_1-1.jpg" alt="producto-1-1">
-                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                             </div>
                             <div class="details">
                                 <h4>Adidas AE 2</h4>
@@ -265,11 +332,11 @@
                         </div>
                     </div>
         
-                    <div class="product" data-id="7">
+                    <div class="product" data-id="7" role="article" tabindex="0">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/jordan-giannis-immortality-4_1-1.jpg" alt="producto-1-1">
-                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                             </div>
                             <div class="details">
                                 <h4>Giannis Immortality</h4>
@@ -286,11 +353,11 @@
                         </div>
                     </div>
         
-                    <div class="product" data-id="8">
+                    <div class="product" data-id="8" role="article" tabindex="0">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/jordan-luka_1-1.jpg" alt="producto-1-1">
-                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                             </div>
                             <div class="details">
                                 <h4>Jordan Luka</h4>
@@ -307,11 +374,11 @@
                         </div>
                     </div>
         
-                    <div class="product" data-id="9">
+                    <div class="product" data-id="9" role="article" tabindex="0">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/adidas-harden-9_1-1.jpg" alt="producto-1-1">
-                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                             </div>
                             <div class="details">
                                 <h4>Adidas Harden 9</h4>
@@ -328,11 +395,11 @@
                         </div>
                     </div>
         
-                    <div class="product" data-id="10">
+                    <div class="product" data-id="10" role="article" tabindex="0">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/nike-book-1_1-1.jpg" alt="producto-1-1">
-                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                             </div>
                             <div class="details">
                                 <h4>Nike Book 1</h4>
@@ -349,11 +416,11 @@
                         </div>
                     </div>
                     
-                    <div class="product" data-id="11">
+                    <div class="product" data-id="11" role="article" tabindex="0">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/nike-kobe-9_1-1.jpg" alt="producto-1-1">
-                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                             </div>
                             <div class="details">
                                 <h4>Nike Kobe 9</h4>
@@ -370,11 +437,11 @@
                         </div>
                     </div>
 
-                    <div class="product" data-id="12">
+                    <div class="product" data-id="12" role="article" tabindex="0">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/jordan-zion-4.jpg" alt="producto-1-1">
-                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                             </div>
                             <div class="details">
                                 <h4>Jordan Zion 4</h4>
@@ -391,11 +458,11 @@
                         </div>
                     </div>
 
-                    <div class="product" data-id="13">
+                    <div class="product" data-id="13" role="article" tabindex="0">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/reebok-shaqattaq_1-1.jpg" alt="producto-1-1">
-                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                             </div>
                             <div class="details">
                                 <h4>Reebok Shaqattaq</h4>
@@ -412,11 +479,11 @@
                         </div>
                     </div>
                     
-                    <div class="product" data-id="14">
+                    <div class="product" data-id="14" role="article" tabindex="0">
                         <div>
                             <div>
                                 <img src="./assets/img/shoes/nike-zoom-freak-5_1-1.jpg" alt="producto-1-1">
-                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist">
+                                <img class="wishlist" src="./assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
                             </div>
                             <div class="details">
                                 <h4>Nike Zoom Freak 5</h4>
@@ -452,9 +519,14 @@
         </div>
     </footer>
 
-    <div id="message"></div>
+    <div id="message" aria-live="polite"></div>
 
+    <!--BOTÓN ACCESIBILIDAD-->
+    <img src="./assets/icons/accessibility-icons/accessibility-icon.svg" alt="accessibility-icon" id="accessibility-btn" aria-label="Accessibility menu" role="button" tabindex="0">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="./js/commons.js"></script>
+    <script src="./js/accessibility.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/cart.js"></script>
 </body>

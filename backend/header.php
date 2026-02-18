@@ -31,6 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/student012/shop/css/output.css">
     <link rel="stylesheet" href="/student012/shop/css/scrollbar.css">
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <title>Shift & Go</title>
 </head>
 <body class="m-0 p-0 box-border list-none font-roboto text-onyx h-screen">
@@ -55,7 +56,7 @@
             <!--Contenido del nav-->
             <ul class="flex flex-col gap-y-5 w-full m-10 lg:flex-row lg:justify-center lg:items-center lg:w-full lg:gap-20 lg:m-0">
                 <li><a class="nav-header-a" id="index" href="../index.html">Home</a></li>
-                <li><a class="nav-header-a" id="aboutUs" href="#">About us</a></li>
+                <li><a class="nav-header-a" id="aboutUs" href="https://shift-and-go-minigame.web.app/">REACT Minigames</a></li>
                 <li><a class="nav-header-a" id="settings" href="/student012/shop/backend/index.php">BACKEND - Index</a></li>
                 <li class="lg:relative">
                     <div class="flex items-center gap-0.5">

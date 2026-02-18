@@ -130,6 +130,18 @@ document.addEventListener("DOMContentLoaded", () => {
         location.href = `${BASE_URL}/views/product_detail.html?id=${productId}`;
       }
     });
+
+    product.addEventListener("keydown", e => {
+      if (e.target.closest('.buy-now, .add-to-cart, .wishlist')) return;
+      
+      if (e.key === 'Enter' || e.key === ' ') {
+        const id = product.dataset.id;
+        if (id) {
+          window.location.href = `./views/product_detail.html?id=${id}`;
+        }
+        e.preventDefault();
+      }
+    });
   });
 
 
@@ -138,13 +150,8 @@ document.addEventListener("DOMContentLoaded", () => {
     window.location.href="/student012/shop/backend/db/my_shopping_cart.php";
   })
 
-<<<<<<< HEAD
   //Función extendida a otros JS para los mensajes en forma de popup -- Establecemos una duración predeterminada de 3 segundos
   window.showMessage = function(content, duration = 3000) {
-=======
-  //Función extendida a otros JS para los mensajes en forma de popup -- Establecemos una duración predeterminada de 5 segundos
-  window.showMessage = function(content, duration = 5000) {
->>>>>>> 716e414a675dd951b5b28a931e2e8011314b7ced
     const container = document.getElementById("message");
     if (!container) return;
 

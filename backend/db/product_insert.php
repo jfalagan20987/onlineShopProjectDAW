@@ -8,6 +8,9 @@
         $description = mysqli_real_escape_string($conn, $_POST['description']);
         $unit_price = $_POST['unit_price'];
     
+        //Treat sizes array
+        $sizes = implode(',',$_POST['sizes']);
+
         //Treat colors array
         $colors = implode(',',$_POST['colors']);
 
@@ -27,8 +30,8 @@
         }
     
         //Put data in the database
-        $sql = "INSERT INTO `012_products`(category_id, image_path, product_name, `description`, color, unit_price)
-                VALUES ($category_id, '$image_path', '$product_name', '$description', '$colors', $unit_price);";
+        $sql = "INSERT INTO `012_products`(category_id, image_path, product_name, `description`, color, `size`, unit_price)
+                VALUES ($category_id, '$image_path', '$product_name', '$description', '$colors', '$sizes',$unit_price);";
     
         // Connect and send confirmation
         mysqli_query($conn, $sql);
@@ -92,21 +95,80 @@ document.addEventListener('DOMContentLoaded', () => {
             </label>
         </p>
 
+        <p class="font-bold">Size:</p>
+        <p class="grid grid-cols-4 gap-2 justify-center">
+            <label class="flex items-center gap-1">
+                <input type="checkbox" name="sizes[]" value="40">40
+            </label>
+            <label class="flex items-center gap-1">
+                <input type="checkbox" name="sizes[]" value="41">41
+            </label>
+            <label class="flex items-center gap-1">
+                <input type="checkbox" name="sizes[]" value="42">42
+            </label>
+            <label class="flex items-center gap-1">
+                <input type="checkbox" name="sizes[]" value="43">43
+            </label>
+            <label class="flex items-center gap-1">
+                <input type="checkbox" name="sizes[]" value="44">44
+            </label>
+            <label class="flex items-center gap-1">
+                <input type="checkbox" name="sizes[]" value="45">45
+            </label>
+            <label class="flex items-center gap-1">
+                <input type="checkbox" name="sizes[]" value="46">46
+            </label>
+            <label class="flex items-center gap-1">
+                <input type="checkbox" name="sizes[]" value="47">47
+            </label>
+        </p>
 
-        <p class="font-bold">Colors:
-            <p class="flex flex-row flex-wrap gap-2 justify-center w-70">
-                <input type="checkbox" name="colors[]" value="black">Black
-                <input type="checkbox" name="colors[]" value="white">White
-                <input type="checkbox" name="colors[]" value="gold">Gold
-                <input type="checkbox" name="colors[]" value="silver">Silver
-                <input type="checkbox" name="colors[]" value="red">Red
-                <input type="checkbox" name="colors[]" value="blue">Blue
-                <input type="checkbox" name="colors[]" value="yellow">Yellow
-                <input type="checkbox" name="colors[]" value="orange">Orange
-                <input type="checkbox" name="colors[]" value="green">Green
-                <input type="checkbox" name="colors[]" value="pink">Pink
-                <input type="checkbox" name="colors[]" value="purple">Purple
-            </p>
+        <p class="font-bold">Colors:</p>
+        <p class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="black" class="color-radio black">
+                <span>Black</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="white" class="color-radio white">
+                <span>White</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="gold" class="color-radio gold">
+                <span>Gold</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="silver" class="color-radio silver">
+                <span>Silver</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="red" class="color-radio red">
+                <span>Red</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="blue" class="color-radio blue">
+                <span>Blue</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="yellow" class="color-radio yellow">
+                <span>Yellow</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="orange" class="color-radio orange">
+                <span>Orange</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="green" class="color-radio green">
+                <span>Green</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="pink" class="color-radio pink">
+                <span>Pink</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" name="colors[]" value="purple" class="color-radio purple">
+                <span>Purple</span>
+            </label>
         </p>
 
         <p>

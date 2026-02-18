@@ -1,0 +1,15 @@
+Customer 4 has logged in -- 2026-01-08 21:03:36
+Customer 3 has logged in -- 2026-01-08 21:07:51
+Customer 8 has logged in -- 2026-01-08 21:12:17
+Customer 4 has logged in -- 2026-02-04 16:44:13
+Customer 3 has logged in -- 2026-02-05 18:46:22
+Customer 3 has logged in -- 2026-02-06 16:05:12
+Customer 4 has logged in -- 2026-02-06 16:15:56
+Customer 3 has logged in -- 2026-02-06 16:52:31
+Customer 3 has logged in -- 2026-02-11 12:09:40
+Customer 3 (acaruso) has logged out -- 2026-02-11 12:09:42
+Customer 4 (ihart) has logged in -- 2026-02-11 12:10:45
+Customer 4 (ihart) has logged out -- 2026-02-11 12:10:46
+Customer 3 (acaruso) has logged in -- 2026-02-12 22:22:18
+Customer 4 (ihart) has logged in -- 2026-02-13 00:00:04
+Customer 3 (acaruso) has logged in -- 2026-02-13 12:43:58

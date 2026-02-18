@@ -13,8 +13,8 @@
     $result = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($result) == 0):
-        $sql = "INSERT INTO `012_shopping_cart`(customer_id, product_id, quantity, selected_color, size)
-            VALUES ($customer_id, $product_id, $quantity, '$selected_color', $size);";
+        $sql = "INSERT INTO `012_shopping_cart`(customer_id, product_id, quantity, selected_color, `size`)
+            VALUES ($customer_id, $product_id, $quantity, '$selected_color', '$size');";
         
         $result = mysqli_query($conn, $sql);
 

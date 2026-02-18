@@ -35,9 +35,10 @@ document.addEventListener("DOMContentLoaded", async () => {
           name="color-${item.product_id}" 
           id="color-${c}-${item.product_id}" 
           value="${c}"
+          aria-label="${c}"
           class="color-radio ${c}" 
           ${item.selected_color === c ? 'checked' : ''}>
-    <label for="color-${c}-${item.product_id}"></label>
+    <label for="color-${c}-${item.product_id}" aria-label="${c}"></label>
   `).join('');
 
   /*Generamos para cada producto una estructura idéntica a la que utilizamos cuando el html era estático*/
@@ -53,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           </div>
           <div>
             <img src="../assets/icons/wishlist.svg" alt="wishlist">
-            <img src="../assets/icons/bin.svg" class="remove" data-id="${item.product_id}" alt="bin">
+            <img src="../assets/icons/bin.svg" class="remove" data-id="${item.product_id}" alt="bin" role="button" tabindex="0">
           </div>
         </div>
       </div>
@@ -80,6 +81,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   `;
 
   list.appendChild(div);
+  applySettings();
 });
 
   //Subtotal
@@ -166,10 +168,30 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       card.remove();
       recalculateSubtotal();
-<<<<<<< HEAD
       showMessage("Product removed");
-=======
->>>>>>> 716e414a675dd951b5b28a931e2e8011314b7ced
+    });
+  });
+
+  document.querySelectorAll(".remove").forEach(btn => {
+    btn.addEventListener("keydown", async e => {
+
+      if(e.key === "Enter" || e.key === " "){   
+        const card = e.target.closest(".product-cart");
+  
+        await fetch(`${API_URL}/cart/remove_from_cart.php`, {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify({
+            product_id: card.dataset.id,
+            selected_color: card.dataset.color,
+            size: card.dataset.size
+          })
+        });
+  
+        card.remove();
+        recalculateSubtotal();
+        showMessage("Product removed");
+      }
     });
   });
 });

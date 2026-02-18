@@ -2,70 +2,139 @@
 
 /*Fuentes*/
 @font-face {
-    font-family: Alexandria;
-    src: url("../assets/fonts/Alexandria/Alexandria-VariableFont_wght.ttf");
+  font-family: Alexandria;
+  src: url("../assets/fonts/Alexandria/Alexandria-VariableFont_wght.ttf");
 }
 
 @font-face {
-    font-family: Roboto;
-    src: url("../assets/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf");
+  font-family: Roboto;
+  src: url("../assets/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf");
 }
 
-/*Personalizaciones*/
+/*Colores necesarios*/
 @theme{
-    --color-poppy: #DF2935;
-    --color-anti-flash-white: #EFF1F3;
-    --color-onyx: #303633;
-    --color-salmon-pink: #ED969C;
-    --color-french-gray: #BDC5D9;
-    --font-alexandria: Alexandria;
-    --font-roboto: Roboto;
+  --color-poppy: #DF2935;
+  --color-anti-flash-white: #EFF1F3;
+  --color-onyx: #303633;
+  --color-salmon-pink: #ED969C;
+  --color-french-gray: #BDC5D9;
+  --font-alexandria: Alexandria;
+  --font-roboto: Roboto;
 }
 
+/*Colores para jugar con la accesibilidad*/
+:root {
+  --bg-main: #EFF1F3;
+  --text-main: #303633;
+}
 
-/* COMPONENTES -- Se han generado, en su mayoría, siguiendo las clases descritas en los .css aplicados en la página principal*/
-@layer components{
+@layer base {
 
-  h2, h3{
+  #accessibility-content {
+    @apply min-h-screen;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+  }
+
+  /*CONTRASTES*/
+  /*Dark mode*/
+  html.contrast-dark #accessibility-content {
+    @apply bg-onyx text-anti-flash-white;
+  }
+
+  /*Light mode*/
+  html.contrast-light #accessibility-content {
+    @apply bg-anti-flash-white text-onyx;
+  }
+
+  /*Grayscale y Saturación -- Tanto en escala de grises como en saturación, necesito forzarlo así. No me funciona con tailwind puro*/
+  html.contrast-gray {
+    filter: grayscale(100%) !important;
+  }
+
+  html.contrast-saturation-high {
+    filter: saturate(200%) !important;
+  }
+
+  html.contrast-saturation-low {
+    filter: saturate(50%) !important;
+  }
+
+  h2, h3 {
     @apply font-alexandria;
   }
 
-  p, small, input {
+  p, small,
+  input, textarea, select {
     @apply font-roboto;
   }
 
-  /*Estilo para header y footer*/
+  input.quantity,
+  select.size {
+    @apply text-onyx;
+  }
+
+  /*Definimos el outline común*/
+  *:focus{
+    @apply outline-[3px] outline-salmon-pink rounded;
+  }
+
+  /*Pequeño ajuste para Desktop*/
+  @media (min-width: 1024px) {
+    .reviews-list h2 {
+      @apply text-onyx;
+    }
+  }
+}
+
+/*COMPONENTES*/
+@layer components {
+
+  /*Distribución del panel de ACCESIBILIDAD*/
+  .contrast-settings{
+    @apply grid grid-cols-6 gap-4 w-full;
+  }
+
+  .contrast-settings button{
+    @apply w-full;
+  }
+
+  .contrast-settings button:nth-child(-n+3) {
+    @apply col-span-2;
+  }
+
+  .contrast-settings button:nth-last-child(-n+2) {
+    @apply col-span-3;
+  }
+
+  /*Clase común de header y footer*/
   .header-footer{
     @apply w-full bg-french-gray flex items-center justify-between p-5 relative;
   }
 
-  /*Estilo para el menú del header*/
+  /*Menú del header*/
   .nav-header{
-    @apply /*Mobiel y Tablet*/ hidden fixed top-0 left-0 right-0 bottom-0 bg-onyx text-anti-flash-white z-1 flex-col justify-start items-start p-1
-      /*Desktop*/ lg:text-center lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-4 lg:sticky lg:bg-french-gray lg:p-0 lg:w-full;
-    }
-  
-  /*Estilos de iconos para desplegar el submenú de Categories*/  
-  .arrowup{
-    @apply hidden;
+    @apply hidden fixed inset-0 bg-onyx text-anti-flash-white z-10 flex-col justify-start items-start p-1
+           lg:flex lg:flex-col lg:items-center lg:justify-center lg:gap-4 lg:sticky lg:bg-french-gray lg:p-0 lg:w-full lg:text-center;
   }
 
+  .arrowup,
   .dropdown{
     @apply hidden;
   }
 
-  /*Submenú de Categories*/
+  /*Submenú de categorías*/
   .submenu{
-    @apply /*Mobile y Tablet*/ hidden flex-col gap-5 mt-5 mx-10
-            /*Desktop*/ lg:absolute lg:top-8 lg:left-0 lg:bg-anti-flash-white lg:border-2 lg:border-solid lg:border-poppy
-            lg:rounded-2xl lg:p-4 lg:items-start lg:gap-2 lg:z-50 lg:m-0 lg:shadow-lg lg:shadow-onyx lg:w-max lg:whitespace-nowrap
+    @apply hidden flex-col gap-5 mt-5 mx-10
+           lg:absolute lg:top-8 lg:left-0 lg:bg-anti-flash-white lg:border-2 lg:border-poppy lg:rounded-2xl lg:p-4  lg:items-start lg:gap-2 lg:z-50 lg:m-0 
+           lg:shadow-lg lg:shadow-onyx lg:w-max lg:whitespace-nowrap;
   }
 
   .submenu a:hover{
-    @apply lg:text-poppy
+    @apply lg:text-poppy;
   }
 
-  .submenu-visible{
+  .submenu-visible, .nav-visible{
     @apply flex;
   }
 
@@ -73,98 +142,150 @@
     @apply text-anti-flash-white text-[1.2em] font-bold cursor-pointer lg:text-onyx;
   }
 
-  .nav-visible{
-    @apply flex;
+  .nav-header-a:hover{
+    @apply underline;
   }
 
   .no-scroll{
     @apply overflow-hidden;
   }
 
-  .nav-header-a:hover{
-    @apply underline;
-  }
-
   .user{
     @apply flex gap-1.5 items-center;
   }
 
-  /*Footer fijo para cuando desplegamos el nav header en Mobile y Tablet*/
   .footer-fixed{
     @apply fixed bottom-0 left-0 w-full;
   }
 
-  /*Componente para el detalle del producto -- Ajustamos anchura a partir de Tablet para que cuadren bien los dos contenedores que lo componen*/
+  /*Contenedor del producto*/
   .product-detail{
-    @apply /*Mobile*/ flex flex-col gap-3 border border-solid border-poppy rounded-xl p-4 w-11/12 mt-4
-            /*Tablet y Desktop*/ sm:flex-row sm:justify-between sm:items-center sm:w-full sm:gap-6 sm:max-w-3xl;
+    @apply flex flex-col gap-3 border border-poppy rounded-xl p-4 w-11/12 mt-4
+           sm:flex-row sm:justify-between sm:items-center sm:w-full sm:gap-6 sm:max-w-3xl;
   }
 
-  /*Botón whishlist*/
   .wishlist{
-    @apply absolute top-2 right-2 border-0 w-6 h-6 text-poppy flex items-center justify-center cursor-pointer hover:scale-110;
+    @apply absolute top-2 right-2 w-6 h-6 text-poppy flex items-center justify-center cursor-pointer hover:scale-110 transition-transform;
   }
 
-  /*Componente para el div que contiene los botones de Comrpar y Añadir al carrito*/
   .buy-cart{
-    @apply /*Mobile*/ flex flex-col gap-2 items-center justify-center w-full 
-          /*Tablet y Desktop*/ sm:flex-row sm:justify-between
-          md:flex-col; /*Volvemos a flex-col para ajustar espacio según el tamaño de la pantalla de la Tablet y que quede todo mejor alineado*/
+    @apply flex flex-col gap-2 items-center justify-center w-full
+           sm:flex-row sm:justify-between
+           md:flex-col;
   }
 
-  /*Botón comprar ya*/
   .buy-now {
-    @apply w-full bg-poppy border-0 p-2 font-bold text-anti-flash-white rounded-xl cursor-pointer hover:shadow-sm hover:shadow-poppy active:bg-onyx hover:scale-105;
+    @apply w-full bg-poppy p-2 font-bold text-anti-flash-white 
+           rounded-xl cursor-pointer transition-all
+           hover:shadow-sm hover:shadow-poppy 
+           hover:scale-105 active:bg-onyx;
   }
 
-  /*Botón añadir al carrito*/
   .add-to-cart {
-    @apply w-full bg-anti-flash-white p-2 border-2 border-solid border-poppy ml-2 rounded-xl cursor-pointer hover:shadow-sm hover:shadow-poppy active:bg-onyx hover:scale-105;
+    @apply w-full bg-anti-flash-white p-2 border-2 border-poppy ml-2 
+           rounded-xl cursor-pointer transition-all
+           hover:shadow-sm hover:shadow-poppy 
+           hover:scale-105 active:bg-onyx;
   }
 
-  /*Botones de selector de color*/
   .color {
-    @apply w-5 h-4 rounded border-0;
+    @apply w-5 h-4 rounded;
   }
 
-  /*Disposición del contenedor con los precios (descuento y final)*/
   .preu {
     @apply flex flex-col items-end;
   }
 
-  /*REVIEWS*/
-  /*En Desktop, le damos una altura fija para cuadrar con la altura de los productos similares.
-    Se puede hacer scroll dentro del contenedor por si hay muchas reviews y así no descuadrar la distribución de elementos*/
+  /*Reviews*/
   .reviews-list{
-    @apply /*Mobile*/ flex flex-col gap-4 pt-0 mb-10 w-full justify-center items-center
-          /*Tablet*/sm:flex-wrap sm:flex-row sm:items-start 
-          /*Desktop*/ lg:flex-col lg:items-center lg:max-w-lg lg:max-h-[600px] lg:overflow-y-auto lg:flex-nowrap lg:justify-start lg:bg-french-gray/20 lg:pb-4 lg:rounded-xl lg:mb-0;
+    @apply flex flex-col gap-4 mb-10 w-full justify-center items-center
+           sm:flex-wrap sm:flex-row sm:items-start
+           lg:flex-col lg:items-center lg:max-w-lg lg:max-h-[600px] lg:overflow-y-auto lg:flex-nowrap lg:justify-start lg:bg-french-gray/20 lg:pb-4 lg:rounded-xl lg:mb-0;
   }
 
-  /*Reviews extra*/
   .more-reviews{
-    @apply /*Mobile*/ flex flex-col gap-4 justify-start 
-          /*Tablet*/ sm:flex-wrap sm:flex-row sm:justify-center
-          /*Desktop*/ lg:flex-col;
+    @apply flex flex-col gap-4 justify-start 
+           sm:flex-wrap sm:flex-row sm:justify-center
+           lg:flex-col;
   }
 
-  /*Estilo de cada review. Anchura límite en Mobile para no sobresalir en dispositivos pequeños y que se hagan más pequeñas*/
   .review{
-    @apply flex flex-col gap-0.5 max-w-80 
-          /*Anchura fija en Tablet y Desktop para cuadrar todo el contenido*/ sm:w-80;
+    @apply flex flex-col gap-0.5 max-w-80 sm:w-80;
   }
 
-  /*Contendor con los Productos similares*/
+  /*Similar products*/
   .similarProducts{
-    @apply /*Mobile*/ flex flex-wrap gap-2 items-center justify-center 
-            /*Tablet*/ sm:flex-nowrap sm:overflow-x-auto sm:scroll-smooth sm:justify-start /*Aparece scroll horizontal*/
-            /*Desktop*/ lg:flex-wrap lg:overflow-x-hidden lg:justify-center lg:max-w-lg;
+    @apply flex flex-wrap gap-2 items-center justify-center
+           sm:flex-nowrap sm:overflow-x-auto sm:scroll-smooth sm:justify-start
+           lg:flex-wrap lg:overflow-x-hidden lg:justify-center lg:max-w-lg;
   }
 
-  /*Estilo para cada producto, del que solo mostraremos su imagen*/
-  /*Se especifica que no puede hacerse más pequeño para que funcione en el slider horizontal de Tablet. 
-    Sino, disminuiría de tamaño hasta cuadrar todos los productos en el ancho de la página*/
   .product{
-    @apply p-3 border border-solid border-poppy rounded-xl shrink-0 w-44 cursor-pointer hover:bg-red-200;
+    @apply p-3 border border-poppy rounded-xl shrink-0 w-44 cursor-pointer 
+           hover:bg-red-200;
   }
+
+  .similarProducts .product {
+    @apply outline-none;
+  }
+
+  .similarProducts .product:focus {
+    @apply ring-2 ring-salmon-pink rounded-xl bg-[#fcc9ccd2];
+  }
+
+  #accessibility-btn {
+    @apply fixed bottom-6 right-6 z-50 p-4 rounded-full 
+           bg-french-gray text-onyx 
+           shadow-md shadow-onyx 
+           cursor-pointer transition-transform duration-300;
+  }
+
+  #accessibility-btn:hover {
+    @apply scale-110 bg-salmon-pink;
+  }
+
+  #accessibility-menu {
+    @apply fixed top-0 right-0 h-screen bg-onyx text-anti-flash-white shadow-lg shadow-onyx p-4 z-[9999] hidden w-full min-w-[250px] max-w-[350px];
+  }
+
+  .accessibility-container {
+    @apply flex flex-col gap-2;
+  }
+
+  .accessibility-container > div:first-of-type {
+    @apply flex justify-between items-center;
+  }
+
+  .accessibility-container section button {
+    @apply flex flex-col items-center justify-center bg-anti-flash-white p-4 rounded-lg font-medium cursor-pointer transition-transform hover:scale-105;
+  }
+
+  .accessibility-container section button:hover{
+    @apply shadow-[0_0_5px_5px_rgba(255,255,255,0.2)];
+  }
+
+  .reset:hover{
+    @apply scale-[1.02] shadow-[0_0_5px_5px_rgba(237,150,156,0.2)];
+  }
+
+  .status{
+    @apply text-anti-flash-white text-center;
+  }
+
+}
+
+@keyframes slideAccess {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+#accessibility-menu{
+  animation: slideAccess 0.3s ease;
 }

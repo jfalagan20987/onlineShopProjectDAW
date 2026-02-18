@@ -108,10 +108,10 @@ if(isset($_POST['submit'])){
               data-product="<?php echo $product['product_id'];?>" 
               class="size-select font-normal bg-white border border-solid border-onyx rounded h-7 w-12">
 
-              <?php foreach(range(40,47) as $size): ?>
+              <?php foreach(explode(',', $product['size']) as $size): ?>
                 <option value="<?php echo $size;?>" 
                   <?php if($product['size'] == "$size") echo "selected"; ?>>
-                  <?php echo $size;?>
+                  <?php echo strtoupper($size);?>
                 </option>
               <?php endforeach;?>
 

@@ -1,0 +1,247 @@
+@import './_variables.scss';
+
+/*ACCESIBILIDAD*/
+html{
+  font-size: 1em;
+  line-height: 1.5;
+  letter-spacing: 0;
+  word-spacing: 0;
+
+  &.contrast-gray{
+    filter: grayscale(100%);
+  }
+
+  /*Dark mode*/
+  &.contrast-dark {
+    background-color: #303633;
+    color: #EFF1F3;
+
+    /*Si no hago nesting con el main aquí dentro, especificando de nuevo los colores, no se aplica*/
+    main {
+      background-color: #303633;
+      color: #EFF1F3;
+    }
+  }
+
+  /*Light mode*/
+  &.contrast-light {
+    background-color: #EFF1F3;
+    color: #303633;
+
+    main{
+      background-color: #EFF1F3;
+      color: #303633;
+    }
+  }
+
+  /*Saturación*/
+  &.contrast-saturation-high {
+    filter: saturate(200%);
+  }
+
+  &.contrast-saturation-low {
+    filter: saturate(50%);
+  }
+}
+
+/*Outline común*/
+*:focus{
+  outline: 3px solid $salmon-pink;
+  border-radius: 4px;
+  outline-offset: 2px;
+}
+
+/*Botón para abrir el menú de accesibilidad*/
+#accessibility-btn{
+  position: fixed;
+  bottom: 1.5em;
+  right: 1.5em;
+  z-index: 999;
+  padding: 1em;
+  border-radius: 50%;
+  background-color: var($french-gray);
+  color: var($onyx);
+  border: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px var($onyx);
+  transition: ease-in-out 0.3s;
+
+  &:hover{
+    transform: scale(1.1);
+    background-color: var($salmon-pink);
+  }
+
+  background-color: $french-gray !important;
+  box-shadow: 2px 2px 8px $onyx !important;
+  border-radius: 50%;
+  padding: 1em;
+}
+
+/*Menú de accesibilidad*/
+#accessibility-menu{
+  position: fixed;
+  background-color: var(--onyx);
+  border: 2px solid var(--poppy);
+  border-radius: 4px;
+  padding: 1em;
+  display: none;
+  z-index: 9999;
+  color: var(--anti-flash-white);
+  min-width: 250px;
+  max-width: 350px;
+  height: 100vh;
+  top: 0;
+  right: 0;
+  bottom: auto;
+  left: auto;
+  border-radius: 0;
+  box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+  animation: slideAccess 0.3s ease;
+}
+
+.accessibility-container{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+
+  > div:first-of-type{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  > div img{
+    cursor: pointer;
+    width: 30px;
+  }
+
+  section{
+    width: 100%;
+    color: var($onyx);
+
+    button{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: var($anti-flash-white);
+      padding: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: ease-in-out 0.3s;
+      border: none;
+
+      &:hover{
+        transform: scale(1.05);
+        box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.2);
+      }
+
+      img{
+        width: 2.5em;
+      }
+    }
+  }
+}
+
+/*Opciones de contraste*/
+.contrast-settings{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  width: 100%;
+  gap: 1em;
+
+  button{
+    width: 100%;
+
+    &:nth-child(-n+3) {
+      grid-column: span 2;
+    }
+
+    &:nth-last-child(-n+2) {
+      grid-column: span 3;
+    }
+  }
+}
+
+/*Opciones de texto*/
+.text-settings{
+  display: grid;
+  width: 100%;
+  gap: 1em;
+  grid-template-columns: repeat(6, 1fr);
+
+  button:first-child,
+  button:nth-child(2){
+    grid-column: span 3;
+  }
+
+  button:nth-child(3),
+  button:nth-child(4),
+  button:last-child{
+    grid-column: span 2;
+  }
+}
+
+/* #fontSize-minus, #fontSize-plus{
+  width: 100%;
+} */
+
+/*Resetear valores*/
+.reset{
+  display: flex;
+  gap: 0.5em;
+  padding: 0.5em 0.8em;
+  border-radius: 10px;
+  background-color: $salmon-pink;
+  color: $onyx;
+  font-weight: 500;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+  border: none;
+
+  &:hover{
+    transform: scale(1.02);
+    box-shadow: 0 0 5px 5px rgba(237, 150, 156, 0.2);
+  }
+}
+
+.status{
+  color: $anti-flash-white;
+  text-align: center;
+}
+
+/* button:focus, a:focus, input:focus, img:focus{
+  outline: 3px solid var($salmon-pink);
+  outline-offset: 2px;
+  border-radius: 4px;
+} */
+
+/*Grayscale*/
+html.contrast-gray{
+  filter: grayscale(100%);
+}
+
+/*Mantenemos el color de este texto para que no cambie a blanco en dark mode*/
+.subtotal p, .wishlist h2{
+  color: $onyx !important;
+}
+
+/*Animación lateral*/
+@keyframes slideAccess {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

@@ -10,20 +10,20 @@
 <body class="m-0 p-0 box-border list-none font-[Roboto] h-screen">
    <!--Header con el logo en tres formatos distintos que se usarán según conveniencia-->
     <header class="header-footer sticky top-0 z-15">
-        <img id="btn-menu" class="h-6 cursor-pointer lg:hidden lg:ml-1.5" src="../assets/icons/menu_burger.png" alt="menu-burger">
+        <img id="btn-menu" class="h-6 cursor-pointer lg:hidden lg:ml-1.5" src="../assets/icons/menu_burger.png" alt="menu-burger" aria-label="Open menu" role="button" tabindex="0">
         <img class="logo cursor-pointer h-15 m-0 sm:hidden" src="../assets/logos/logo_small_shift_and_go.png" alt="logo-small">
         <img class="logo cursor-pointer h-15 m-0 hidden sm:flex lg:hidden" src="../assets/logos/logo_long_shift_and_go.png" alt="logo-long">
         <img class="logo cursor-pointer m-0 hidden lg:flex h-20" src="../assets/logos/logo_shift_and_go.png" alt="logo">
 
         <!--nav que será un desplegable en Mobile y Tablet, pero que estará fijo en Desktop-->
-        <nav id="nav-header" class="nav-header">
+        <nav id="nav-header" class="nav-header" role="navigation" aria-label="Navigation menu">
             <div id="btn-close" class="h-6 absolute top-6 right-6 cursor-pointer lg:hidden">
-                <img class="h-6" src="../assets/icons/close_menu.png" alt="close-menu">
+                <img class="h-6" src="../assets/icons/close_menu.png" alt="close-menu" aria-label="Close navigation menu" role="button" tabindex="0">
             </div>
             <!--Buscador de la versión Desktop, que debe encontrarse dentro del header a diferencia de las versiones Mobile y Tablet-->
             <div class="buscador hidden lg:flex lg:w-2xl mt-2.5">
                 <input class="h-10 w-full border border-solid border-onyx rounded pl-2 text-onyx font-medium bg-anti-flash-white 
-                focus:border-3 focus:border-solid focus:border-salmon-pink focus:outline-0 focus:shadow-salmon-pink focus:shadow-xs" type="search" name="search" placeholder="Search products..." autocomplete="off">
+                focus:border-3 focus:border-solid focus:border-salmon-pink focus:outline-0 focus:shadow-salmon-pink focus:shadow-xs" type="search" name="search" placeholder="Search products..." autocomplete="off" aria-label="Search products">
             </div>
 
             <!--Contenido del nav-->
@@ -34,43 +34,111 @@
                         <a class="nav-header-a" id="categories" href="#">Categories</a>
 
                         <!--Iconos para controlar el submenu en dos colores distintos que controlaremos con data-variant en JavaScript-->
-                        <img src="../assets/icons/dropdown.svg" alt="dropdown" class="dropdown cursor-pointer lg:hidden" data-variant="white">
-                        <img src="../assets/icons/arrowup.svg" alt="arrowup" class="arrowup cursor-pointer lg:hidden" data-variant="white">
+                        <img src="../assets/icons/dropdown.svg" alt="dropdown" class="dropdown cursor-pointer lg:hidden" data-variant="white" role="button" tabindex="0">
+                        <img src="../assets/icons/arrowup.svg" alt="arrowup" class="arrowup cursor-pointer lg:hidden" data-variant="white" role="button" tabindex="0">
 
-                        <img src="../assets/icons/dropdown-onyx.svg" alt="dropdown" class="dropdown cursor-pointer lg:flex" data-variant="onyx">
-                        <img src="../assets/icons/arrowup-onyx.svg" alt="arrowup" class="arrowup cursor-pointer" data-variant="onyx">
+                        <img src="../assets/icons/dropdown-onyx.svg" alt="dropdown" class="dropdown cursor-pointer lg:flex" data-variant="onyx" role="button" tabindex="0">
+                        <img src="../assets/icons/arrowup-onyx.svg" alt="arrowup" class="arrowup cursor-pointer" data-variant="onyx" role="button" tabindex="0">
                     </div>
-                    <ul class="submenu">
-                        <li><a class="nav-header-a" href="#">Adidas</a></li>
-                        <li><a class="nav-header-a" href="#">Converse</a></li>
-                        <li><a class="nav-header-a" href="#">Jordan</a></li>
-                        <li><a class="nav-header-a" href="#">New Balance</a></li>
-                        <li><a class="nav-header-a" href="#">Nike</a></li>
-                        <li><a class="nav-header-a" href="#">Puma</a></li>
-                        <li><a class="nav-header-a" href="#">Reebok</a></li>
-                        <li><a class="nav-header-a" href="#">Under Armour</a></li>
+                    <ul class="submenu" role="menu">
+                        <li><a class="nav-header-a" href="#" role="menuitem">Adidas</a></li>
+                        <li><a class="nav-header-a" href="#" role="menuitem">Converse</a></li>
+                        <li><a class="nav-header-a" href="#" role="menuitem">Jordan</a></li>
+                        <li><a class="nav-header-a" href="#" role="menuitem">New Balance</a></li>
+                        <li><a class="nav-header-a" href="#" role="menuitem">Nike</a></li>
+                        <li><a class="nav-header-a" href="#" role="menuitem">Puma</a></li>
+                        <li><a class="nav-header-a" href="#" role="menuitem">Reebok</a></li>
+                        <li><a class="nav-header-a" href="#" role="menuitem">Under Armour</a></li>
                     </ul>
                 </li>
-                <li><a class="nav-header-a" id="aboutUs" href="#">About us</a></li>
-                <li><a class="nav-header-a" id="settings" href="../backend/index.php">BACKEND - index.php</a></li>
+                <li><a class="nav-header-a" id="aboutUs" href="#" aria-label="About us">About us</a></li>
+                <li><a class="nav-header-a" id="settings" href="../backend/index.php" aria-label="Backend access">BACKEND - index.php</a></li>
             </ul>
         </nav>
         <div class="flex gap-4 items-center">
             <div class="user">
-                <img class="h-8 cursor-pointer" src="../assets/icons/user.png" alt="user">
+                <img class="h-8 cursor-pointer" src="../assets/icons/user.png" alt="user" aria-label="User profile">
                 <!--Este texto, por cuestiones de espacio, solo se mostrará en Tablet y Desktop-->
                 <p class="hidden font-bold text-onyx sm:flex">Hello, username</p>
             </div>
-            <a href="./shopping_cart.html"><img class="h-8 cursor-pointer" src="../assets/icons/shopping_cart_black.png" alt="shopping-cart"></a>
+            <a href="./shopping_cart.html" aria-label="Shopping cart"><img class="h-8 cursor-pointer" src="../assets/icons/shopping_cart_black.png" alt="shopping-cart"></a>
         </div>
     </header>
-    <main class="bg-anti-flash-white text-onyx min-h-full flex flex-col items-center p-4 gap-6">
+
+    <!--CONTENEDOR ACCESIBILIDAD-->
+    <div id="accessibility-menu" class="border-solid border-poppy border-2" role="dialog" aria-label="Accessibility settings">
+        <div class="accessibility-container">
+            <div>
+                <h2 class="text-[22px] font-bold">Accessibility settings</h2>
+                <img src="../assets/icons/accessibility-icons/close-accessibility.svg" alt="close-accessibility" role="button" tabindex="0" class="cursor-pointer">
+            </div>
+    
+            <!--Opciones de contraste-->
+            <section class="contrast-settings w-full mb-2">
+                <button data-contrast="normal" aria-label="Normal contrast" class="flex flex-col items-center p-3 bg-anti-flash-white rounded-lg text-onyx">
+                    <img src="../assets/icons/accessibility-icons/normal.svg" alt="normal-contrast" class="w-10">
+                    <p>Normal</p>
+                </button>
+                <button data-contrast="gray" aria-label="Grayscale mode" class="flex flex-col items-center p-3 bg-anti-flash-white rounded-lg text-onyx">
+                    <img src="../assets/icons/accessibility-icons/grayscale.svg" alt="grayscale" class="w-10">
+                    <p>Grayscale</p>
+                </button>
+                <button data-contrast="saturation" aria-label="Saturation mode" class="flex flex-col items-center p-3 bg-anti-flash-white rounded-lg text-onyx">
+                    <img src="../assets/icons/accessibility-icons/saturation.svg" alt="saturation" class="w-10">
+                    <p>Saturation</p>
+                </button>
+                <button data-contrast="dark" aria-label="Dark mode" class="flex flex-col items-center p-3 bg-anti-flash-white rounded-lg text-onyx">
+                    <img src="../assets/icons/accessibility-icons/dark-mode.svg" alt="dark-mode" class="w-10">
+                    <p>Dark Mode</p>
+                </button>
+                <button data-contrast="light" aria-label="Light mode" class="flex flex-col items-center p-3 bg-anti-flash-white rounded-lg text-onyx">
+                    <img src="../assets/icons/accessibility-icons/light-mode.svg" alt="light-mode" class="w-10">
+                    <p>Light Mode</p>
+                </button>
+            </section>
+
+            <!--Opciones de texto-->
+            <section class="text-settings w-full grid grid-cols-6 gap-4">
+                <button id="fontSize-minus" aria-label="Decrease text size" class="col-span-3 flex flex-col items-center p-3 bg-anti-flash-white rounded-lg text-onyx">
+                    <img src="../assets/icons/accessibility-icons/font-minus.svg" alt="font-minus" class="w-10">
+                    <p>Text decrease</p>
+                </button>
+                <button id="fontSize-plus" aria-label="Increase text size" class="col-span-3 flex flex-col items-center p-3 bg-anti-flash-white rounded-lg text-onyx">
+                    <img src="../assets/icons/accessibility-icons/font-plus.svg" alt="font-plus" class="w-10">
+                    <p>Text increase</p>
+                </button>
+                <button id="line-spacing" aria-label="Modify line spacing" class="col-span-2 flex flex-col items-center p-3 bg-anti-flash-white rounded-lg text-onyx">
+                    <img src="../assets/icons/accessibility-icons/line-spacing.svg" alt="line-spacing" class="w-10">
+                    <p>Line spacing</p>
+                </button>
+                <button id="word-spacing" aria-label="Modify word spacing" class="col-span-2 flex flex-col items-center p-3 bg-anti-flash-white rounded-lg text-onyx">
+                    <img src="../assets/icons/accessibility-icons/word-spacing.svg" alt="word-spacing" class="w-10">
+                    <p>word spacing</p>
+                </button>
+                <button id="letter-spacing" aria-label="Modify letter spacing" class="col-span-2 flex flex-col items-center p-3 bg-anti-flash-white rounded-lg text-onyx">
+                    <img src="../assets/icons/accessibility-icons/letter-spacing.svg" alt="letter-spacing" class="w-10">
+                    <p>Letter spacing</p>
+                </button>
+            </section>
+
+            <!--Opción de reseteo-->
+            <button aria-label="Restore accessibility default settings" class="reset flex items-center justify-center gap-2 bg-salmon-pink p-1 rounded-lg w-full mt-4 text-onyx font-medium cursor-pointer">
+                <img src="../assets/icons/accessibility-icons/reset.svg" alt="reset" class="w-10">
+                <p>Restore all values</p>
+            </button>
+
+            <!--Información textual de la opción aplicada-->
+            <p class="status" aria-live="polite" aria-label="Accessibility setting applied"></p>
+        </div>
+    </div>
+
+    <main id="accessibility-content" class="min-h-full flex flex-col items-center p-4 gap-6">
         <!--Sección que contiene los detalles del producto-->
-         <section class="product-detail">
+         <section class="product-detail" role="article" aria-label="Product details">
             <!--Para la imagen y el botón de wishlist, mantenemos estructura idéntica a la página principal y siempre usamos imágenes 1:1-->
             <div class="relative sm:w-1/2">
                 <img id="image_path" class="w-full sm:w-[365px] rounded-xl" src="">
-                <img class="wishlist" src="../assets/icons/wishlist.svg" alt="wishlist">
+                <img class="wishlist" src="../assets/icons/wishlist.svg" alt="wishlist" aria-label="Add to wishlist" role="button" tabindex="0">
             </div>
 
             <!--Apartado con todos los detalles (nombre, descripción, valoración media, color, cantidad, talla, precio y botones)-->
@@ -82,13 +150,13 @@
                     <h3 id="product_name" class="font-bold text-3xl"></h3>
                     <p id="description" class="text-sm"></p>
                     <div class="font-semibold flex items-center gap-2 self-end">
-                        <p>4.7</p>
-                        <p>★★★★☆</p> <!--Esto queda pendiente de implementar una valoración media dinámica-->
+                        <p aria-label="Average rating">4.7</p>
+                        <p aria-label="Rating stars">★★★★☆</p> <!--Esto queda pendiente de implementar una valoración media dinámica-->
                     </div>
                 </div>
 
                 <!--Encajonamos en un form los elementos que tendrán influencia para añadir al carrito o comprar el producto-->
-                <form class="flex flex-col gap-4">
+                <form class="flex flex-col gap-4" aria-label="Purchase form">
                     <label for="color" class="flex items-center gap-0.5 font-semibold">Color:
                         <button class="color bg-amber-400 cursor-pointer hover:border hover:border-solid hover:border-onyx" title="gold"></button>
                         <button class="color bg-gray-400 cursor-pointer hover:border hover:border-solid hover:border-onyx" title="silver"></button>
@@ -98,11 +166,13 @@
                     <div class="flex items-end justify-between w-full">
                         <div class="flex flex-col items-start gap-3">
                             <label for="quantity" class="font-semibold">Quantity:
-                                <input type="number" name="quantity" id="quantity" min="1" value="1" class="max-w-10 font-normal bg-white rounded border border-solid border-onyx pl-1 focus:outline-0 focus:border-2 focus:border-salmon-pink">
+                                <input type="number" name="quantity" id="quantity" min="1" value="1" class="max-w-10 font-normal bg-white rounded border border-solid border-onyx pl-1 focus:outline-0 focus:border-2 focus:border-salmon-pink quantity"
+                                aria-required="true" aria-label="Product quantity">
                             </label>
             
                             <label for="size" class="font-semibold">Size:
-                                <select name="size" id="size" class="max-w-10 font-normal bg-white rounded border border-solid border-onyx focus:outline-0 focus:border-2 focus:border-salmon-pink min-w-12">
+                                <select name="size" id="size" class="max-w-10 font-normal bg-white rounded border border-solid border-onyx focus:outline-0 focus:border-2 focus:border-salmon-pink min-w-12 size"
+                                aria-required="true" aria-label="Product size">
                                     <option value="40">40</option>
                                     <option value="41">41</option>
                                     <option value="42">42</option>
@@ -118,12 +188,12 @@
                         <!--Adjuntamos el precio a este form por una simple cuestión de distribución de los elementos-->
                         <div class="preu">
                             <!-- <p class="line-through text-poppy">149.99€</p> -->
-                            <h3 id="unit_price" class="text-2xl font-bold self-end"></h3>
+                            <h3 id="unit_price" class="text-2xl font-bold self-end" aria-live="polite"></h3>
                         </div>
                     </div>
                     <div class="buy-cart">
-                        <button type="submit" class="buy-now">BUY NOW</button>
-                        <button class="add-to-cart m-0"><img class="h-5 m-auto" src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
+                        <button type="submit" class="buy-now" aria-label="Buy now">BUY NOW</button>
+                        <button class="add-to-cart m-0" aria-label="Add to shopping cart"><img class="h-5 m-auto" src="../assets/icons/shopping_cart.png" alt="shopping-cart"></button>
                     </div>
                 </form>
             </div>
@@ -133,12 +203,12 @@
          <div class="mb-4 sm:w-full lg:flex lg:items-start lg:justify-center mt-6">
 
             <!--REVIEWS-->
-             <section class="reviews-list">
+             <section class="reviews-list" aria-label="Customer reviews">
                 <h2 class="basis-full font-bold text-xl text-center mt-4 lg:sticky lg:top-0 lg:z-10 lg:bg-anti-flash-white lg:w-full lg:p-2 lg:mt-0">REVIEWS</h2>
                 <div class="review">
                     <div class="flex items-start gap-2">
                         <h3 class="font-semibold">user123</h3>
-                        <p>★★★★☆</p>
+                        <p aria-label="Review rating">★★★★☆</p>
                     </div>
                     <small>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex rerum debitis, quam at magnam eos modi 
@@ -150,7 +220,7 @@
                 <div class="review">
                     <div class="flex items-start gap-2">
                         <h3 class="font-semibold">user123</h3>
-                        <p>★★★★★</p>
+                        <p aria-label="Review rating">★★★★★</p>
                     </div>
                     <small>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex rerum debitis, quam at magnam eos modi 
@@ -165,7 +235,7 @@
                     <div class="review">
                         <div class="flex items-start gap-2">
                             <h3 class="font-semibold">user123</h3>
-                            <p>★★★★★</p>
+                            <p aria-label="Review rating">★★★★★</p>
                         </div>
                         <small>
                             OKC, OKC, OKC!
@@ -174,7 +244,7 @@
                     <div class="review">
                         <div class="flex items-start gap-2">
                             <h3 class="font-semibold">user123</h3>
-                            <p>★★★☆☆</p>
+                            <p aria-label="Review rating">★★★☆☆</p>
                         </div>
                         <small>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex rerum debitis, quam at magnam eos modi 
@@ -184,7 +254,7 @@
                     <div class="review">
                         <div class="flex items-start gap-2">
                             <h3 class="font-semibold">user123</h3>
-                            <p>★★★☆☆</p>
+                            <p aria-label="Review rating">★★★☆☆</p>
                         </div>
                         <small>
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex rerum debitis, quam at magnam eos modi 
@@ -194,7 +264,7 @@
                     <div class="review">
                         <div class="flex items-start gap-2">
                             <h3 class="font-semibold">user123</h3>
-                            <p>★★★★★</p>
+                            <p aria-label="Review rating">★★★★★</p>
                         </div>
                         <small>
                             OKC, OKC, OKC!
@@ -203,48 +273,29 @@
                 </div>
 
                 <!--Botón para desplegar el contenedor "more-reviews". En Desktop no aparecerá-->
-                <button class="basis-full mb-3 whitespace-nowrap text-poppy font-semibold cursor-pointer hover:scale-110 hover:underline lg:hidden">See more</button>
+                <button class="basis-full mb-3 whitespace-nowrap text-poppy font-semibold cursor-pointer hover:scale-110 hover:underline lg:hidden" aria-label="Show more reviews">See more</button>
             </section>
 
             <!--Sección con 6 productos similares (la idea es que en un futuro estos productos correspondan a la misma marca de zapatilla)-->
-            <section>
+            <section aria-label="Similar products">
                 <h2 class="font-bold text-xl mb-4 mt-4 text-center lg:mt-0 lg:mb-0 lg:p-2">SIMILAR PRODUCTS</h2>
                 <div class="similarProducts">
-<<<<<<< HEAD
-                    <div class="product" data-id="11">
+                    <div class="product" data-id="11" role="article" tabindex="0">
                         <img class="rounded-xl" src="../assets/img/shoes/nike-kobe-9_1-1.jpg" alt="producto-1-1">
                     </div>
-                    <div class="product" data-id="9">
+                    <div class="product" data-id="9" role="article" tabindex="0">
                         <img class="rounded-xl" src="../assets/img/shoes/adidas-harden-9_1-1.jpg" alt="producto-1-1">
                     </div>
-                    <div class="product" data-id="6">
+                    <div class="product" data-id="6" role="article" tabindex="0">
                         <img class="rounded-xl" src="../assets/img/shoes/adidas-ae-2_1-1.jpg" alt="producto-1-1">
                     </div>
-                    <div class="product" data-id="5">
+                    <div class="product" data-id="5" role="article" tabindex="0">
                         <img class="rounded-xl" src="../assets/img/shoes/jordan-tatum-3_1-1.jpg" alt="producto-1-1">
                     </div>
-                    <div class="product" data-id="2">
+                    <div class="product" data-id="2" role="article" tabindex="0">
                         <img class="rounded-xl" src="../assets/img/shoes/curry-4_1-1.jpg" alt="producto-1-1">
                     </div>
-                    <div class="product" data-id="3">
-=======
-                    <div class="product">
-                        <img class="rounded-xl" src="../assets/img/shoes/nike-kobe-9_1-1.jpg" alt="producto-1-1">
-                    </div>
-                    <div class="product">
-                        <img class="rounded-xl" src="../assets/img/shoes/adidas-harden-9_1-1.jpg" alt="producto-1-1">
-                    </div>
-                    <div class="product">
-                        <img class="rounded-xl" src="../assets/img/shoes/adidas-ae-2_1-1.jpg" alt="producto-1-1">
-                    </div>
-                    <div class="product">
-                        <img class="rounded-xl" src="../assets/img/shoes/jordan-tatum-3_1-1.jpg" alt="producto-1-1">
-                    </div>
-                    <div class="product">
-                        <img class="rounded-xl" src="../assets/img/shoes/curry-4_1-1.jpg" alt="producto-1-1">
-                    </div>
-                    <div class="product">
->>>>>>> 716e414a675dd951b5b28a931e2e8011314b7ced
+                    <div class="product" data-id="3" role="article" tabindex="0">
                         <img class="rounded-xl" src="../assets/img/shoes/kd-18_1-1.jpg" alt="producto-1-1">
                     </div>
                 </div>
@@ -265,10 +316,16 @@
             <img class="h-5 cursor-pointer" src="../assets/img/twitter-logo.png" alt="twitter-logo">
             <img class="h-5 cursor-pointer" src="../assets/img/facebook-logo.png" alt="facebook-logo">
         </div>
-    </footer>
+    </footer>   
 
-    <div id="message"></div>
+    <div id="message" aria-live="polite"></div>
 
+    <!--BOTÓN ACCESIBILIDAD-->
+    <img src="../assets/icons/accessibility-icons/accessibility-icon.svg" alt="accessibility-icon" id="accessibility-btn" aria-label="Accessibility menu" aria-expanded="false">
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../js/accessibility.js"></script>
     <script src="../js/commons.js"></script>
     <script src="../js/product_detail.js"></script>
     <script src="../js/cart.js"></script>

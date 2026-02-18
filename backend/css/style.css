@@ -1,0 +1,54 @@
+:root{
+    --poppy: #DF2935;
+    --anti-flash-white: #EFF1F3;
+    --onyx: #303633;
+    --salmon-pink: #ED969C;
+    --french-gray: #BDC5D9;
+}
+
+@font-face {
+    font-family: Alexandria;
+    src: url("../fonts/Alexandria/Alexandria-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url("/student012/shop/frontend/fonts/Roboto/Roboto-VariableFont_wdth\,wght.ttf");
+}
+
+*{
+    font-family: Roboto;
+}
+
+body{
+  height: 100vh;
+}
+
+header, footer{
+  background-color: var(--french-gray);
+}
+
+header p, footer p{
+  color: var(--onyx);
+}
+
+header input[value="LOGIN"], header input[value="LOGOUT"]{
+  background-color: var(--poppy);
+  color: var(--anti-flash-white);
+  font-weight: bold;
+}
+
+header input[value="REGISTER"]{
+  background-color: var(--anti-flash-white);
+  color: var(--poppy);
+  font-weight: bold;
+}
+
+header input:hover{
+  transform: scale(1.1);
+}
+
+main{
+  background-color: var(--anti-flash-white);
+  height: calc(100vh - 170px);
+}
